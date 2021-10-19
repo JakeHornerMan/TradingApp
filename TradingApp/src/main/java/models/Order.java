@@ -9,6 +9,8 @@ import javax.persistence.Id;
 @Entity
 public class Order {
 
+	public Order() {}
+	
 	@Id
     @GeneratedValue
 	private int order_id;
