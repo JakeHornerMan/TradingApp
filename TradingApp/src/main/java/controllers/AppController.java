@@ -8,6 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class AppController {
 
+    //request 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView showLanding() {
         return new ModelAndView("index");
