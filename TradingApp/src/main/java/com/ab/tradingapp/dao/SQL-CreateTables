@@ -1,0 +1,49 @@
+CREATE TABLE `User` (
+	`user_id` INT NOT NULL AUTO_INCREMENT,
+	`user_email` varchar(255) NOT NULL,
+	`user_password` varchar(255) NOT NULL,
+	`wallet_id` INT NOT NULL AUTO_INCREMENT,
+	PRIMARY KEY (`user_id`)
+);
+
+CREATE TABLE `Wallet` (
+	`wallet_id` INT NOT NULL,
+	`user_id` INT NOT NULL,
+	`stock_id` INT NOT NULL,
+	`stock_amount` DECIMAL NOT NULL DEFAULT '0.0',
+	PRIMARY KEY (`wallet_id`)
+);
+
+CREATE TABLE `Stocks` (
+	`stock_id` INT NOT NULL AUTO_INCREMENT,
+	`stock_name` varchar(255) NOT NULL,
+	`stock_value` DECIMAL NOT NULL,
+	`stock_fee` DECIMAL(255) NOT NULL,
+	PRIMARY KEY (`stock_id`)
+);
+
+CREATE TABLE `Orders` (
+	`order_id` DECIMAL NOT NULL AUTO_INCREMENT,
+	`user_id` INT NOT NULL,
+	`stock_id` INT NOT NULL,
+	`type` varchar(255) NOT NULL,
+	`transaction_amount` DECIMAL NOT NULL,
+	`transaction_cost` DECIMAL NOT NULL,
+	`order_date` DATETIME NOT NULL,
+	`order_fee` DECIMAL,
+	PRIMARY KEY (`order_id`)
+);
+
+ALTER TABLE `Wallet` ADD CONSTRAINT `Wallet_fk0` FOREIGN KEY (`wallet_id`) REFERENCES `User`(`wallet_id`);
+
+ALTER TABLE `Wallet` ADD CONSTRAINT `Wallet_fk1` FOREIGN KEY (`user_id`) REFERENCES `User`(`user_id`);
+
+ALTER TABLE `Wallet` ADD CONSTRAINT `Wallet_fk2` FOREIGN KEY (`stock_id`) REFERENCES `Stocks`(`stock_id`);
+
+ALTER TABLE `Orders` ADD CONSTRAINT `Orders_fk0` FOREIGN KEY (`user_id`) REFERENCES `User`(`user_id`);
+
+ALTER TABLE `Orders` ADD CONSTRAINT `Orders_fk1` FOREIGN KEY (`stock_id`) REFERENCES `Stocks`(`stock_id`);
+
+
+
+
