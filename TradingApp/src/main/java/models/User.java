@@ -2,13 +2,14 @@ package models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int user_id;
     private String user_email;
     private String user_password;
@@ -54,5 +55,15 @@ public class User {
 
     public void setWallet_id(int wallet_id) {
         this.wallet_id = wallet_id;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "user_id=" + user_id +
+                ", user_email='" + user_email + '\'' +
+                ", user_password='" + user_password + '\'' +
+                ", wallet_id=" + wallet_id +
+                '}';
     }
 }
