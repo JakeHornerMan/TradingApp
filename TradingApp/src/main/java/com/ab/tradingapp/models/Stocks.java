@@ -1,4 +1,4 @@
-package models;
+package com.ab.tradingapp.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

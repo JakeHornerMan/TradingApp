@@ -1,10 +1,10 @@
-package services;
+package com.ab.tradingapp.services;
 
-import models.User;
+import com.ab.tradingapp.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.stereotype.Service;
-import repos.UserRepo;
+import com.ab.tradingapp.repos.UserRepo;
 
 import java.util.List;
 

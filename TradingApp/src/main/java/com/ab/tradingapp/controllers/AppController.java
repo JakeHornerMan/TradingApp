@@ -1,13 +1,13 @@
-package controllers;
+package com.ab.tradingapp.controllers;
 
-import models.User;
+import com.ab.tradingapp.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import services.UserService;
+import com.ab.tradingapp.services.UserService;
 
 @Controller
 public class AppController {
