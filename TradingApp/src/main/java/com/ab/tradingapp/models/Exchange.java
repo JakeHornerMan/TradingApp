@@ -1,13 +1,20 @@
 package com.ab.tradingapp.models;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Exchange {
 
+	@Id
 	private String exchange_id;
 	private int stock_id;
 	private String stock_name;
 	private double stock_value;
 	private double stock_fee;
 	private double stock_amount;
+	
+	public Exchange() {}
 	
 	public Exchange(String exchange_id, int stock_id, String stock_name, double stock_value, double stock_fee,
 			double stock_amount) {

@@ -8,7 +8,7 @@ import javax.persistence.Id;
 @Entity
 public class Wallet {
 	
-	
+	@Id
 	private int userId;
 	private int stockId;
 	private double stockAmount;
