@@ -16,18 +16,19 @@ public class Order {
 	private int order_id;
 	private int user_id;
 	private int stock_id;
+	private int exchange_id;
 	private String type;
 	private double transaction_amount;
 	private double transaction_cost;
 	private LocalDateTime dateTime;
 	
-	public Order(int order_id, int user_id, int stock_id, String type, double transaction_amount,
-			double transaction_cost, LocalDateTime dateTime) 
-	{
+	public Order(int order_id, int user_id, int stock_id, int exchange_id, String type, double transaction_amount,
+			double transaction_cost, LocalDateTime dateTime) {
 		super();
 		this.order_id = order_id;
 		this.user_id = user_id;
 		this.stock_id = stock_id;
+		this.exchange_id = exchange_id;
 		this.type = type;
 		this.transaction_amount = transaction_amount;
 		this.transaction_cost = transaction_cost;
@@ -56,6 +57,14 @@ public class Order {
 
 	public void setStock_id(int stock_id) {
 		this.stock_id = stock_id;
+	}
+
+	public int getExchange_id() {
+		return exchange_id;
+	}
+
+	public void setExchange_id(int exchange_id) {
+		this.exchange_id = exchange_id;
 	}
 
 	public String getType() {
@@ -92,9 +101,9 @@ public class Order {
 
 	@Override
 	public String toString() {
-		return "Order [order_id=" + order_id + ", user_id=" + user_id + ", stock_id=" + stock_id + ", type=" + type
-				+ ", transaction_amount=" + transaction_amount + ", transaction_cost=" + transaction_cost
-				+ ", dateTime=" + dateTime + "]";
+		return "Order [order_id=" + order_id + ", user_id=" + user_id + ", stock_id=" + stock_id + ", exchange_id="
+				+ exchange_id + ", type=" + type + ", transaction_amount=" + transaction_amount + ", transaction_cost="
+				+ transaction_cost + ", dateTime=" + dateTime + "]";
 	}
 	
 }

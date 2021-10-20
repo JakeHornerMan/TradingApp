@@ -55,7 +55,3 @@ ALTER TABLE `Orders` ADD CONSTRAINT `Orders_fk1` FOREIGN KEY (`stock_id`) REFERE
 
 ALTER TABLE `Orders` ADD CONSTRAINT `Orders_fk2` FOREIGN KEY (`exchange_id`) REFERENCES `Exchange`(`exchange_id`);
 
-
-
-
-
