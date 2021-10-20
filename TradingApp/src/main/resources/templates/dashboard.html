@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/><!-- Bootstrap CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
     <link th:href="@{css/external.css}" rel="stylesheet"/><!--link to external .css stylesheet-->
-    <title>Successful Registration</title>
+    <title>Dashboard</title>
 </head>
 <body>
 <div class="background" data-color="azure">
-    <div class="container text-center">
-        <div class="header">
-            <h1> Successful Registration!</h1>
-            <h2 ><a th:href="@{/login}">Please log in to continue</a></h2>
-        </div>
+    <div class="header">
+
+        <h1>Welcome to your dashboard &nbsp[[${#request.userPrincipal.principal.username}]]</h1>
+        <h2>Here you can access your personal trades...</h2>
+        <button id="btn-logout"><a href="/logout">Log out</a></button>
     </div>
 </div>
 

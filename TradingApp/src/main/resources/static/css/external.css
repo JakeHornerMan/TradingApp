@@ -1,0 +1,71 @@
+body {
+    margin: 0 0 0 0;
+    text-align: center;
+}
+.page-container {
+    position: relative;
+    min-height: 100vh;
+}
+.background {
+    background-size: cover;
+    opacity: 90%;
+    min-height: 100vh; /* so background stays full size of viewport*/
+    background-image: url('../images/bg.jpg');
+    width: 100%;
+}
+
+.header {
+    text-align: center;
+    text-shadow: 2px 2px 5px black;
+    padding-top: 1%;
+    color: white;
+    font-family: Arial, Verdana, sans-serif;
+}
+
+input[type=text], input[type=password], input[type=email]{
+    min-height: 6vh;
+    min-width:43vh;
+    padding: 1%;
+    margin: 1% 0;
+    border-radius: 5px;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, .1);
+    transition: 0.5s;
+    outline: none; /*removes deault 'blue' outline when field is selected*/
+    background-color: rgba(255, 255, 255, .8); /* allows change in opacity without affected text */
+    font-family: Helvetica, sans-serif;
+    text-align: left;
+    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+    display: inline-block;
+}
+
+#login, #btn-register, #btn-logout{
+    min-width:43vh;
+    display: inline-block;
+    background-image: linear-gradient(to bottom right, #4dffa6, #365eff);
+    color: #fff;
+    padding: 1%;
+    min-height: 6vh;
+    margin: 1% 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+    font-size: 16px;
+    text-decoration: none
+
+}
+
+::placeholder{
+    color: #454545;
+    opacity: 1;
+}
+
+input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, select:focus{
+    border: 2px solid white;
+    background-color: rgba(255, 255, 255, 1);
+    color:#454545;
+}

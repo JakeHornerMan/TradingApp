@@ -2,12 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xml:lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/><!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+    <link th:href="@{css/external.css}" rel="stylesheet"/><!--link to external .css stylesheet-->
+    <title>Register</title>
 </head>
 <body>
-
+<div class="background" data-color="azure">
 <div class="container text-center">
-    <div>
+    <div class="header">
         <h1>User Registration - Sign Up</h1>
     </div>
     <form action="#" th:action="@{/save_user}" th:object="${user}"
@@ -27,10 +31,11 @@
                 </div>
             </div>
             <div>
-                <button type="submit" class="btn btn-primary">Register</button>
+                <button type="submit" id="btn-register">REGISTER</button>
             </div>
         </div>
     </form>
+</div>
 </div>
 </body>
 </html>

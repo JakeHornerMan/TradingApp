@@ -2,13 +2,40 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/><!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+    <link th:href="@{css/external.css}" rel="stylesheet"/><!--link to external .css stylesheet-->
+    <title>SOR - Group Project</title>
 </head>
 <body>
+<div class="background" data-color="azure">
+    <div class="header">
+        <h1>SMART ORDER ROUTING - GROUP PROJECT</h1>
+        <h2>Login or Register to continue</h2>
+    </div>
 
-<h1>WELCOME TO OUR APP</h1>
+    <form name="loginForm" th:action="@{/login}"
+          method="post" action="#">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="email" required name="user_email" id="user_email"
+                               placeholder="Email" class="form-control"></div>
 
-<a href="register">REGISTER</a>
+                    <div class="col-sm-6">
+                        <input type="password" required name="user_password" id="user_password"
+                               placeholder="Password" class="form-control"/></div>
+                </div>
+                <div class="col-sm-6">
+                    <input id="login" size="40" type="submit" name="login" value="LOGIN"/></div>
+
+                <button id="btn-register"><a th:href="@{/register}">REGISTER</a></button>
+            </div>
+        </div>
+    </form>
+</div>
 
 </body>
 </html>
