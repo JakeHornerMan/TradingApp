@@ -7,9 +7,8 @@ import javax.persistence.Id;
 
 @Entity
 public class Wallet {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int walletId;
+	
+	
 	private int userId;
 	private int stockId;
 	private double stockAmount;
@@ -17,21 +16,14 @@ public class Wallet {
 	
 	public Wallet() {}
 
-	public Wallet(int walletId, int userId, int stockId, double stockAmount) {
+	public Wallet(int userId, int stockId, double stockAmount) {
 		super();
-		this.walletId = walletId;
+		
 		this.userId = userId;
 		this.stockId = stockId;
 		this.stockAmount = stockAmount;
 	}
 
-	public int getWalletId() {
-		return walletId;
-	}
-
-	public void setWalletId(int walletId) {
-		this.walletId = walletId;
-	}
 
 	public int getUserId() {
 		return userId;
@@ -59,7 +51,7 @@ public class Wallet {
 
 	@Override
 	public String toString() {
-		return "Wallet [walletId=" + walletId + ", userId=" + userId + ", stockId=" + stockId + ", stockAmount="
+		return "Wallet [userId=" + userId + ", stockId=" + stockId + ", stockAmount="
 				+ stockAmount + "]";
 	}
 }
