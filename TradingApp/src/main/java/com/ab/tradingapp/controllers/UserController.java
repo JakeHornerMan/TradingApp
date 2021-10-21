@@ -1,7 +1,6 @@
 package com.ab.tradingapp.controllers;
 
 import com.ab.tradingapp.models.User;
-import com.ab.tradingapp.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -13,10 +12,12 @@ import com.ab.tradingapp.services.UserService;
 import java.security.Principal;
 
 @Controller
-public class AppController {
+public class UserController {
 
     @Autowired
     private UserService service;
+
+    // VIEW HANDLER METHODS
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView showLanding() {
@@ -45,6 +46,8 @@ public class AppController {
         return new ModelAndView("index");
     }
 
+
+    // USER METHODS
 
     @PostMapping("/save_user")
     public String saveUser(User user, @ModelAttribute("user_email") String username,

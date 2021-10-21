@@ -20,6 +20,7 @@ public class UserService {
     }
 
     public void save(User user) {
+        user.setUser_balance(1000.00);
         repo.save(user);
     }
 
@@ -30,8 +31,5 @@ public class UserService {
     public void delete(int userID) {
         repo.deleteById(userID);
     }
-
-
-
 }
 

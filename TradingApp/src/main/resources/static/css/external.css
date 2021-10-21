@@ -31,7 +31,7 @@ input[type=text], input[type=password], input[type=email]{
     box-sizing: border-box;
     border: 2px solid rgba(0, 0, 0, .1);
     transition: 0.5s;
-    outline: none; /*removes deault 'blue' outline when field is selected*/
+    outline: none; /*removes default 'blue' outline when field is selected*/
     background-color: rgba(255, 255, 255, .8); /* allows change in opacity without affected text */
     font-family: Helvetica, sans-serif;
     text-align: left;
@@ -55,8 +55,15 @@ input[type=text], input[type=password], input[type=email]{
     font-weight: bold;
     box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
     font-size: 16px;
-    text-decoration: none
+    text-decoration: none;
+}
 
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
 }
 
 ::placeholder{
@@ -68,4 +75,11 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, sel
     border: 2px solid white;
     background-color: rgba(255, 255, 255, 1);
     color:#454545;
+}
+
+.form_label{
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+    color: white;
+    text-align: left;
 }
