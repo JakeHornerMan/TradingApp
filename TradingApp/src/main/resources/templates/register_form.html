@@ -12,19 +12,19 @@
 <div class="background" data-color="azure">
 <div class="container text-center">
     <div class="header">
-        <h1>User Registration - Sign Up</h1>
+        <h1>User Registration</h1>
     </div>
     <form action="#" th:action="@{/save_user}" th:object="${user}"
           method="post" style="max-width: 600px; margin: 0 auto;">
         <div class="m-3">
             <div class="form-group row">
-                <label class="col-4 col-form-label">E-mail: </label>
+                <label class="form_label">E-mail: </label>
                 <div class="col-8">
                     <input type="email" th:field="*{user_email}" class="form-control" required/>
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-4 col-form-label">Password: </label>
+                <label class="form_label">Password: </label>
                 <div class="col-8">
                     <input type="password" th:field="*{user_password}" class="form-control"
                            required minlength="6" maxlength="10"/>

@@ -17,6 +17,8 @@ public class UserController {
     @Autowired
     private UserService service;
 
+    // VIEW HANDLER METHODS
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView showLanding() {
         return new ModelAndView("index");
@@ -44,6 +46,8 @@ public class UserController {
         return new ModelAndView("index");
     }
 
+
+    // USER METHODS
 
     @PostMapping("/save_user")
     public String saveUser(User user, @ModelAttribute("user_email") String username,
