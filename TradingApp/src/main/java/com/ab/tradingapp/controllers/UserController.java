@@ -33,17 +33,14 @@ public class UserController {
 
     @RequestMapping(value = "/dashboard", method = RequestMethod.GET)
     public ModelAndView showDash(
-    		@ModelAttribute Stocks stock ) {
+    		@ModelAttribute Stocks stock) {
     	
     	ModelAndView v = new ModelAndView();
     	List<Stocks> s = stockservice.listAll();
-    	
-    	
+
     	v.addObject("listStocks", s);
     	v.setViewName("/dashboard");
-    	//System.out.print(v);
-    	//System.out.print(s);
-    	
+
         return v;
     }
 
