@@ -15,10 +15,10 @@ public class Stocks {
 	
 	public Stocks() {}
 
-	public Stocks(int stock_id, String stcok_name, boolean stock_bse, boolean stock_nse, boolean stock_tyo) {
+	public Stocks(int stock_id, String stock_name, boolean stock_bse, boolean stock_nse, boolean stock_tyo) {
 		super();
 		this.stock_id = stock_id;
-		this.stock_name = stcok_name;
+		this.stock_name = stock_name;
 		this.stock_bse = stock_bse;
 		this.stock_nse = stock_nse;
 		this.stock_tyo = stock_tyo;
@@ -32,12 +32,12 @@ public class Stocks {
 		this.stock_id = stock_id;
 	}
 
-	public String getStcok_name() {
+	public String getStock_name() {
 		return stock_name;
 	}
 
-	public void setStcok_name(String stcok_name) {
-		this.stock_name = stcok_name;
+	public void setStock_name(String stock_name) {
+		this.stock_name = stock_name;
 	}
 
 	public boolean isStock_bse() {

@@ -39,7 +39,7 @@ public class UserController {
     	List<Stocks> s = stockservice.listAll();
     	
     	
-    	v.addObject("Stocks", s);
+    	v.addObject("listStocks", s);
     	v.setViewName("/dashboard");
     	//System.out.print(v);
     	//System.out.print(s);
