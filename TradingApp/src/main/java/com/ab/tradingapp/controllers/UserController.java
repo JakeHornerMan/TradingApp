@@ -1,7 +1,6 @@
 package com.ab.tradingapp.controllers;
 
 import com.ab.tradingapp.models.User;
-import com.ab.tradingapp.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -13,7 +12,7 @@ import com.ab.tradingapp.services.UserService;
 import java.security.Principal;
 
 @Controller
-public class AppController {
+public class UserController {
 
     @Autowired
     private UserService service;
