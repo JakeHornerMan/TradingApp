@@ -1,0 +1,9 @@
+INSERT INTO Stocks (stock_name, stock_bse, stock_nse,stock_tyo) VALUES ('GOOGL', true, true, true);
+
+INSERT INTO Stocks (stock_name, stock_bse, stock_nse,stock_tyo) VALUES ('AMD', true, false, true);
+
+INSERT INTO Stocks (stock_name, stock_bse, stock_nse,stock_tyo) VALUES ('SONY', false, true, true);
+
+INSERT INTO Stocks (stock_name, stock_bse, stock_nse,stock_tyo) VALUES ('NIO', true, true, false);
+
+INSERT INTO Stocks (stock_name, stock_bse, stock_nse,stock_tyo) VALUES ('ZNGA', true, true, true);

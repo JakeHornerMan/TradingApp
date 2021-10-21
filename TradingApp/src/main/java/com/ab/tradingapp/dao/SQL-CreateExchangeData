@@ -1,0 +1,16 @@
+INSERT INTO Exchange (exchange_code,stock_id,stock_name,stock_value,stock_fee,stock_amount) VALUES('BSE',1,'GOOGL',501.00,2.0,105.0);
+INSERT INTO Exchange (exchange_code,stock_id,stock_name,stock_value,stock_fee,stock_amount)VALUES('NSE',1,'GOOGL',502.12,1.5,60.0);
+INSERT INTO Exchange (exchange_code,stock_id,stock_name,stock_value,stock_fee,stock_amount)VALUES('TYO',1,'GOOGL',499.98,2.5,120.0);
+
+INSERT INTO Exchange (exchange_code,stock_id,stock_name,stock_value,stock_fee,stock_amount)VALUES('BSE',2,'AMD',108.00,2.0,98.0);
+INSERT INTO Exchange (exchange_code,stock_id,stock_name,stock_value,stock_fee,stock_amount)VALUES('TYO',2,'AMD',107.76,2.5,109.0);
+
+INSERT INTO Exchange (exchange_code,stock_id,stock_name,stock_value,stock_fee,stock_amount)VALUES('NSE',3,'SONY',112.12,1.5,90.0);
+INSERT INTO Exchange (exchange_code,stock_id,stock_name,stock_value,stock_fee,stock_amount)VALUES('TYO',3,'SONY',110.98,2.5,125.0);
+
+INSERT INTO Exchange (exchange_code,stock_id,stock_name,stock_value,stock_fee,stock_amount)VALUES('BSE',4,'NIO',33.56,2.0,210.0);
+INSERT INTO Exchange (exchange_code,stock_id,stock_name,stock_value,stock_fee,stock_amount)VALUES('NSE',4,'NIO',31.72,2.5,100.0);
+
+INSERT INTO Exchange (exchange_code,stock_id,stock_name,stock_value,stock_fee,stock_amount)VALUES('BSE',5,'ZNGA',10.20,2.0,100.0);
+INSERT INTO Exchange (exchange_code,stock_id,stock_name,stock_value,stock_fee,stock_amount)VALUES('NSE',5,'ZNGA',11.12,1.5,40.0);
+INSERT INTO Exchange (exchange_code,stock_id,stock_name,stock_value,stock_fee,stock_amount)VALUES('TYO',5,'ZNGA',9.98,2.5,28.0);

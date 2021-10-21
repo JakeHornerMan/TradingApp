@@ -2,23 +2,24 @@ CREATE TABLE `User` (
 	`user_id` INT NOT NULL AUTO_INCREMENT,
 	`user_email` varchar(255) NOT NULL,
 	`user_password` varchar(255) NOT NULL,
-	`user_balance` DECIMAL NOT NULL DEFAULT '1000.00',
+	`user_balance` FLOAT NOT NULL DEFAULT '1000.00',
 	PRIMARY KEY (`user_id`)
 );
 
 CREATE TABLE `Wallet` (
 	`user_id` INT NOT NULL,
 	`stock_id` INT NOT NULL,
-	`stock_amount` DECIMAL NOT NULL DEFAULT '0.0'
+	`stock_amount` FLOAT NOT NULL DEFAULT '0.0'
 );
 
 CREATE TABLE `Exchange` (
-	`exchange_id` varchar(6) NOT NULL,
+	`exchange_id` INT NOT NULL AUTO_INCREMENT,
+	`exchange_code` varchar(6) NOT NULL,
 	`stock_id` INT NOT NULL,
 	`stock_name` varchar(255) NOT NULL,
-	`stock_value` DECIMAL NOT NULL,
-	`stock_fee` DECIMAL NOT NULL,
-	`stock_amount` DECIMAL NOT NULL,
+	`stock_value` FLOAT NOT NULL,
+	`stock_fee` FLOAT NOT NULL,
+	`stock_amount` FLOAT NOT NULL,
 	PRIMARY KEY (`exchange_id`)
 );
 
@@ -26,10 +27,10 @@ CREATE TABLE `Orders` (
 	`order_id` INT NOT NULL AUTO_INCREMENT,
 	`user_id` INT NOT NULL,
 	`stock_id` INT NOT NULL,
-	`exchange_id` varchar(6) NOT NULL,
+	`exchange_code` varchar(6) NOT NULL,
 	`type` varchar(255) NOT NULL,
-	`transaction_amount` DECIMAL NOT NULL,
-	`transaction_cost` DECIMAL NOT NULL,
+	`transaction_amount` FLOAT NOT NULL,
+	`transaction_cost` FLOAT NOT NULL,
 	`order_date` DATETIME NOT NULL,
 	PRIMARY KEY (`order_id`)
 );
@@ -53,5 +54,5 @@ ALTER TABLE `Orders` ADD CONSTRAINT `Orders_fk0` FOREIGN KEY (`user_id`) REFEREN
 
 ALTER TABLE `Orders` ADD CONSTRAINT `Orders_fk1` FOREIGN KEY (`stock_id`) REFERENCES `Stocks`(`stock_id`);
 
-ALTER TABLE `Orders` ADD CONSTRAINT `Orders_fk2` FOREIGN KEY (`exchange_id`) REFERENCES `Exchange`(`exchange_id`);
+
 
