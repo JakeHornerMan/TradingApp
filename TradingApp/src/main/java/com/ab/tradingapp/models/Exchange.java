@@ -7,7 +7,8 @@ import javax.persistence.Id;
 public class Exchange {
 
 	@Id
-	private String exchange_id;
+	private int exchange_id;
+	private String exchange_code;
 	private int stock_id;
 	private String stock_name;
 	private double stock_value;
@@ -15,11 +16,12 @@ public class Exchange {
 	private double stock_amount;
 	
 	public Exchange() {}
-	
-	public Exchange(String exchange_id, int stock_id, String stock_name, double stock_value, double stock_fee,
-			double stock_amount) {
+
+	public Exchange(int exchange_id, String exchange_code, int stock_id, String stock_name, double stock_value,
+			double stock_fee, double stock_amount) {
 		super();
 		this.exchange_id = exchange_id;
+		this.exchange_code = exchange_code;
 		this.stock_id = stock_id;
 		this.stock_name = stock_name;
 		this.stock_value = stock_value;
@@ -27,12 +29,20 @@ public class Exchange {
 		this.stock_amount = stock_amount;
 	}
 
-	public String getExchange_id() {
+	public int getExchange_id() {
 		return exchange_id;
 	}
 
-	public void setExchange_id(String exchange_id) {
+	public void setExchange_id(int exchange_id) {
 		this.exchange_id = exchange_id;
+	}
+
+	public String getExchange_code() {
+		return exchange_code;
+	}
+
+	public void setExchange_code(String exchange_code) {
+		this.exchange_code = exchange_code;
 	}
 
 	public int getStock_id() {
@@ -77,8 +87,9 @@ public class Exchange {
 
 	@Override
 	public String toString() {
-		return "Exchange [exchange_id=" + exchange_id + ", stock_id=" + stock_id + ", stock_name=" + stock_name
-				+ ", stock_value=" + stock_value + ", stock_fee=" + stock_fee + ", stock_amount=" + stock_amount + "]";
+		return "Exchange [exchange_id=" + exchange_id + ", exchange_code=" + exchange_code + ", stock_id=" + stock_id
+				+ ", stock_name=" + stock_name + ", stock_value=" + stock_value + ", stock_fee=" + stock_fee
+				+ ", stock_amount=" + stock_amount + "]";
 	}
 	
 }
