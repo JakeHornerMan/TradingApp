@@ -13,13 +13,13 @@ public class User {
     private int user_id;
     private String user_email;
     private String user_password;
-    private int wallet_id;
+    private double user_balance;
 
-    public User(int user_id, String user_email, String user_password, int wallet_id) {
+    public User(int user_id, String user_email, String user_password, double user_balance) {
         this.user_id = user_id;
         this.user_email = user_email;
         this.user_password = user_password;
-        this.wallet_id = wallet_id;
+        this.user_balance = user_balance;
     }
 
     public User() {
@@ -49,12 +49,12 @@ public class User {
         this.user_password = user_password;
     }
 
-    public int getWallet_id() {
-        return wallet_id;
+    public double getUser_balance() {
+        return user_balance;
     }
 
-    public void setWallet_id(int wallet_id) {
-        this.wallet_id = wallet_id;
+    public void setUser_balance(double user_balance) {
+        this.user_balance = user_balance;
     }
 
     @Override
@@ -63,7 +63,7 @@ public class User {
                 "user_id=" + user_id +
                 ", user_email='" + user_email + '\'' +
                 ", user_password='" + user_password + '\'' +
-                ", wallet_id=" + wallet_id +
+                ", wallet_id=" + user_balance +
                 '}';
     }
 }
