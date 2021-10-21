@@ -28,15 +28,21 @@
                     <th>Stock BSE</th>
                     <th>Stock NSE</th>
                     <th>Stock TYO</th>
+                    <th>View Avaliable Stocks</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="stocks: ${listStocks}">
                     <td th:text="${stocks.stock_id}">Stock ID</td>
                     <td th:text="${stocks.stock_name}">Stock Name</td>
-                    <td th:text="${stocks.stock_bse}">Stock BSE</td>
-                    <td th:text="${stocks.stock_nse}">Stock NSE</td>
-                    <td th:text="${stocks.stock_tyo}">Stock TYO</td>
+                    <!-- <td th:text="${stocks.stock_bse}">Stock BSE</td> -->
+                    <td th:text="${stocks.stock_bse} ? 'AVALIABLE' : 'NOT AVALIABLE'" />
+                    <!-- <td th:text="${stocks.stock_nse}">Stock NSE</td> -->
+                    <td th:text="${stocks.stock_nse} ? 'AVALIABLE' : 'NOT AVALIABLE'" />
+                    <!-- <td th:text="${stocks.stock_tyo}">Stock TYO</td> -->
+                    <td th:text="${stocks.stock_tyo} ? 'AVALIABLE' : 'NOT AVALIABLE'" />
+                    <td><a th:href="@{/ExchangePage(stockId=${stocks.stock_id})}" th:text="View" class="button"></a></td>
+                    
                 </tr>
                 </tbody>
             </table>

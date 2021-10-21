@@ -1,5 +1,6 @@
 package com.ab.tradingapp.controllers;
 
+import com.ab.tradingapp.models.Exchange;
 import com.ab.tradingapp.models.Stocks;
 import com.ab.tradingapp.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ab.tradingapp.services.ExchangeService;
 import com.ab.tradingapp.services.StockService;
 import com.ab.tradingapp.services.UserService;
 
@@ -23,6 +25,9 @@ public class UserController {
     
     @Autowired
     private StockService stockservice;
+    
+    @Autowired
+    private ExchangeService exchangeservice;
 
     // VIEW HANDLER METHODS
 
@@ -59,6 +64,28 @@ public class UserController {
     @RequestMapping("/logout")
     public ModelAndView viewLogout() {
         return new ModelAndView("index");
+    }
+    
+    @PostMapping("/ExchangePage")
+    @ResponseBody 
+    public ModelAndView getStockId(@RequestParam int stockId){
+		
+    	ModelAndView mav = new ModelAndView();
+    	List<Exchange> e = exchangeservice.FindAllExchagesForStock(stockId);
+    	
+    	mav.addObject("listExchanges", e);
+    	mav.setViewName("/ExchangePage");
+
+        return mav;
+    	
+    }
+    
+    @RequestMapping(value="/viewStockOptions", method = RequestMethod.GET)
+    public ModelAndView viewStockOptions(@ModelAttribute Exchange exchange) {
+		
+    	
+    	return null;
+    	
     }
 
 

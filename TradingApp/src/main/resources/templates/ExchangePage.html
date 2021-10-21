@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Exchange Page</title>
+</head>
+<body>
+
+<div>
+            <h1>List of Exchanges</h1>
+        </div>
+        <div>
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Exchange Code</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="exchange: ${listExchanges}">
+                    <td th:text="${exchange.exchange_code}">Exchange Code</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+</body>
+</html>
