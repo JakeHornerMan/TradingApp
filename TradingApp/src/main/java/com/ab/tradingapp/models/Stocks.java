@@ -8,7 +8,7 @@ public class Stocks {
 	
 	@Id
 	private int stock_id;
-	private String stcok_name; 
+	private String stock_name; 
 	private boolean stock_bse;
 	private boolean stock_nse;
 	private boolean stock_tyo;
@@ -18,7 +18,7 @@ public class Stocks {
 	public Stocks(int stock_id, String stcok_name, boolean stock_bse, boolean stock_nse, boolean stock_tyo) {
 		super();
 		this.stock_id = stock_id;
-		this.stcok_name = stcok_name;
+		this.stock_name = stcok_name;
 		this.stock_bse = stock_bse;
 		this.stock_nse = stock_nse;
 		this.stock_tyo = stock_tyo;
@@ -33,11 +33,11 @@ public class Stocks {
 	}
 
 	public String getStcok_name() {
-		return stcok_name;
+		return stock_name;
 	}
 
 	public void setStcok_name(String stcok_name) {
-		this.stcok_name = stcok_name;
+		this.stock_name = stcok_name;
 	}
 
 	public boolean isStock_bse() {
@@ -64,11 +64,11 @@ public class Stocks {
 		this.stock_tyo = stock_tyo;
 	}
 
-	@Override
-	public String toString() {
-		return "Stocks [stock_id=" + stock_id + ", stcok_name=" + stcok_name + ", stock_bse=" + stock_bse
-				+ ", stock_nse=" + stock_nse + ", stock_tyo=" + stock_tyo + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Stocks [stock_id=" + stock_id + ", stcok_name=" + stock_name + ", stock_bse=" + stock_bse
+//				+ ", stock_nse=" + stock_nse + ", stock_tyo=" + stock_tyo + "]";
+//	}
 	
 	
 	

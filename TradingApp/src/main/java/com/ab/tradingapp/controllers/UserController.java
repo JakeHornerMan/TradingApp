@@ -1,5 +1,6 @@
 package com.ab.tradingapp.controllers;
 
+import com.ab.tradingapp.models.Stocks;
 import com.ab.tradingapp.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -7,15 +8,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.ab.tradingapp.services.StockService;
 import com.ab.tradingapp.services.UserService;
 
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 public class UserController {
 
     @Autowired
     private UserService service;
+    
+    @Autowired
+    private StockService stockservice;
 
     // VIEW HANDLER METHODS
 
@@ -25,8 +32,19 @@ public class UserController {
     }
 
     @RequestMapping(value = "/dashboard", method = RequestMethod.GET)
-    public ModelAndView showDash() {
-        return new ModelAndView("dashboard");
+    public ModelAndView showDash(
+    		@ModelAttribute Stocks stock ) {
+    	
+    	ModelAndView v = new ModelAndView();
+    	List<Stocks> s = stockservice.listAll();
+    	
+    	
+    	v.addObject("Stocks", s);
+    	v.setViewName("/dashboard");
+    	//System.out.print(v);
+    	//System.out.print(s);
+    	
+        return v;
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)

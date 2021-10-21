@@ -57,13 +57,13 @@ public class User {
         this.user_balance = user_balance;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "user_id=" + user_id +
-                ", user_email='" + user_email + '\'' +
-                ", user_password='" + user_password + '\'' +
-                ", wallet_id=" + user_balance +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "User{" +
+//                "user_id=" + user_id +
+//                ", user_email='" + user_email + '\'' +
+//                ", user_password='" + user_password + '\'' +
+//                ", wallet_id=" + user_balance +
+//                '}';
+//    }
 }

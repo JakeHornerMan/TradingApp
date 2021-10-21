@@ -49,9 +49,9 @@ public class Wallet {
 		this.stockAmount = stockAmount;
 	}
 
-	@Override
-	public String toString() {
-		return "Wallet [userId=" + userId + ", stockId=" + stockId + ", stockAmount="
-				+ stockAmount + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Wallet [userId=" + userId + ", stockId=" + stockId + ", stockAmount="
+//				+ stockAmount + "]";
+//	}
 }
