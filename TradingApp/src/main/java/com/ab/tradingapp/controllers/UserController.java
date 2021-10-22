@@ -33,7 +33,7 @@ public class UserController {
     private ExchangeService exchangeservice;
     
     @Autowired
-    private CustomUserDetailsService customuserdetails;
+    private CustomUserDetailsService detailservice;
 
     @Autowired
     private OrderService orderservice;
@@ -89,22 +89,25 @@ public class UserController {
 		return mv;
 	}
     
-    /*@PostMapping(value="/create_purchase")
-    public String addAndViewCart(String exchange_code, double transaction_amount, double stock_value ,int stock_id) {
+    @PostMapping(value="/create_purchase")
+    public String addAndViewCart(String exchange_code, double transaction_amount, double stock_value ,int stock_id, double stock_fee) {
     	
     	 Order reqOrder = new Order();
-    	 reqOrder.setUser_id(1);//customuserdetails.getId()); //later replace
+    	 reqOrder.setUser_id(detailservice.returnUserID());
     	 reqOrder.setStock_id(stock_id);
     	 reqOrder.setExchange_code(exchange_code);
     	 reqOrder.setType("BUY");
     	 reqOrder.setTransaction_amount(transaction_amount);
-    	 reqOrder.setTransaction_cost(0.0); //replace later transaction_amount * STOCK_VALUE
+    	 
+    	 double cost = (stock_value*transaction_amount)+stock_fee;
+    	 
+    	 reqOrder.setTransaction_cost(cost); //replace later transaction_amount * STOCK_VALUE
     	 reqOrder.setDateTime(null);
     	 
     	 orderservice.addToCart(reqOrder);
     	 
     	 return "Cart"; //
-    }*/
+    }
     
     @RequestMapping(value="/viewStockOptions", method = RequestMethod.GET)
     public ModelAndView viewStockOptions(@ModelAttribute Exchange exchange) {

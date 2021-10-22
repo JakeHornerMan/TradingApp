@@ -35,29 +35,30 @@
                 </tbody>
             </table>
         </div>
-        <!-- <div>
+        <div>
 	        <form action="#" th:action="@{/create_purchase}" th:object="${Order}"
 	          	method="post" style="max-width: 600px; margin: 0 auto;">
 		        <div class="m-3">
 		            <div class="form-group row">
-		                <label class="form_label">E-mail: </label>
+		                <label class="form_label">Exchage Brooker: </label>
 		                <div class="col-8">
-		                    <input type="email" th:field="*{exchage_code}" class="form-control" required/>
+		                	<select>
+							  <option  th:each="exchange: ${listExchanges}" value="${exchange.exchange_code}" th:text="${exchange.exchange_code}"/>exchange_code</option>
+							</select>
 		                </div>
 		            </div>
 		            <div class="form-group row">
 		                <label class="form_label">Password: </label>
 		                <div class="col-8">
-		                    <input type="password" th:field="*{stock_amount}" class="form-control"
-		                           required minlength="6" maxlength="10"/>
+		                    <!-- <input type="number" th:field="*{stock_amount}" class="form-control" required/> -->
 		                </div>
 		            </div>
 		            <div>
-		                <button type="submit" id="btn-register">REGISTER</button>
+		                <button type="submit" id="btn-register">SELECT</button>
 		            </div>
 		        </div>
 		    </form>
-	    </div> -->
+	    </div>
 	
 	</body>
 </html>
