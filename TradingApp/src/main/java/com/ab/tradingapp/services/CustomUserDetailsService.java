@@ -35,4 +35,15 @@ public class CustomUserDetailsService implements UserDetailsService {
         return authentication.getName();
     }
 
+    public int returnUserID() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = (User) authentication.getPrincipal();
+        int userId = user.getUser_id();
+        return userId;
+    }
+
+    public UserDetails loadUserByUserID(int id){
+        User user = userRepo.findByID(id);
+        return new CustomUserDetails(user);
+    }
 }
