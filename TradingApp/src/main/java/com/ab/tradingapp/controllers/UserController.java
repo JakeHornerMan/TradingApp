@@ -67,9 +67,9 @@ public class UserController {
     }
     
     @RequestMapping(value = "/ExchangePage/{stock_id}", method = RequestMethod.POST)
-    //@ResponseBody 
+    @ResponseBody 
     public ModelAndView getStockId(
-    		@PathVariable int stockId ){
+    		@PathVariable (name = "Stockid")int stockId ){
 		
     	ModelAndView mav = new ModelAndView();
     	List<Exchange> e = exchangeservice.FindAllExchagesForStock(stockId);
@@ -78,8 +78,12 @@ public class UserController {
     	mav.setViewName("/ExchangePage");
 
         return mav;
-    	
     }
+    
+    @RequestMapping(value="/ExchangePage")
+	public String nextPage() {
+		return "ExchangePage";
+	}
     
     @RequestMapping(value="/viewStockOptions", method = RequestMethod.GET)
     public ModelAndView viewStockOptions(@ModelAttribute Exchange exchange) {
