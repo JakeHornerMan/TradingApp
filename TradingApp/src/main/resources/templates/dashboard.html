@@ -41,8 +41,8 @@
                     <td th:text="${stocks.stock_nse} ? 'AVALIABLE' : 'NOT AVALIABLE'" />
                     <!-- <td th:text="${stocks.stock_tyo}">Stock TYO</td> -->
                     <td th:text="${stocks.stock_tyo} ? 'AVALIABLE' : 'NOT AVALIABLE'" />
-                    <form action="/ExchangePage" method="post">
-                    <td><a th:href="@{/ExchangePage(stockId=${stocks.stock_id})}" th:text="View" class="button"></a></td>
+                    <form action="/exchangePage" method="post">
+                    <td><a th:href="@{/exchangePage(stock_id=${stocks.stock_id})}" th:text="View" class="button"></a></td>
                     </form>
                 </tr>
                 </tbody>

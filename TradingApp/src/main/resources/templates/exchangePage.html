@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xml:lang="en">
+	<head>
+		<meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1"/><!-- Bootstrap CSS -->
+	    <link href="css/bootstrap.min.css" rel="stylesheet"
+	          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+	    <link th:href="@{css/external.css}" rel="stylesheet"/><!--link to external .css stylesheet-->
+		<title>Exchange Page</title>
+	</head>
+	<body>
+	
+		<div>
+           <h1>List of Exchanges</h1>
+        </div>
+        <div>
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Exchange Code</th>
+                    <th>Stock Name</th>
+                    <th>Stock Value</th>
+                    <th>Commission Fee</th>
+                    <th>Amount of Assets</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="exchange: ${listExchanges}">
+                    <td th:text="${exchange.exchange_code}">Exchange Code</td>
+                    <td th:text="${exchange.stock_name}">Stock Name</td>
+                    <td th:text="${exchange.stock_value}">Stock Value</td>
+                    <td th:text="${exchange.stock_fee}">Commission Fee</td>
+                    <td th:text="${exchange.stock_amount}">Amount of Assets</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- <div>
+	        <form action="#" th:action="@{/create_purchase}" th:object="${Order}"
+	          	method="post" style="max-width: 600px; margin: 0 auto;">
+		        <div class="m-3">
+		            <div class="form-group row">
+		                <label class="form_label">E-mail: </label>
+		                <div class="col-8">
+		                    <input type="email" th:field="*{exchage_code}" class="form-control" required/>
+		                </div>
+		            </div>
+		            <div class="form-group row">
+		                <label class="form_label">Password: </label>
+		                <div class="col-8">
+		                    <input type="password" th:field="*{stock_amount}" class="form-control"
+		                           required minlength="6" maxlength="10"/>
+		                </div>
+		            </div>
+		            <div>
+		                <button type="submit" id="btn-register">REGISTER</button>
+		            </div>
+		        </div>
+		    </form>
+	    </div> -->
+	
+	</body>
+</html>

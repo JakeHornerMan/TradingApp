@@ -1,6 +1,7 @@
 package com.ab.tradingapp.controllers;
 
 import com.ab.tradingapp.models.Exchange;
+import com.ab.tradingapp.models.Order;
 import com.ab.tradingapp.models.Stocks;
 import com.ab.tradingapp.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ab.tradingapp.services.CustomUserDetailsService;
 import com.ab.tradingapp.services.ExchangeService;
+import com.ab.tradingapp.services.OrderService;
 import com.ab.tradingapp.services.StockService;
 import com.ab.tradingapp.services.UserService;
 
@@ -28,7 +31,12 @@ public class UserController {
     
     @Autowired
     private ExchangeService exchangeservice;
+    
+    @Autowired
+    private CustomUserDetailsService customuserdetails;
 
+    @Autowired
+    private OrderService orderservice;
     // VIEW HANDLER METHODS
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -66,24 +74,37 @@ public class UserController {
         return new ModelAndView("index");
     }
     
-    @RequestMapping(value = "/ExchangePage/{stock_id}", method = RequestMethod.POST)
-    @ResponseBody 
-    public ModelAndView getStockId(
-    		@PathVariable (name = "Stockid")int stockId ){
-		
-    	ModelAndView mav = new ModelAndView();
-    	List<Exchange> e = exchangeservice.FindAllExchagesForStock(stockId);
+    @RequestMapping(value="/exchangePage")
+	public ModelAndView getExchagesByStockId(@RequestParam("stock_id") int stock_id) {
     	
-    	mav.addObject("listExchanges", e);
-    	mav.setViewName("/ExchangePage");
-
-        return mav;
-    }
-    
-    @RequestMapping(value="/ExchangePage")
-	public String nextPage() {
-		return "ExchangePage";
+    	ModelAndView mv = new ModelAndView();
+    	List<Exchange> elist = exchangeservice.FindAllExchagesForStock(stock_id);
+    	
+    	/*for (Exchange e : elist) {
+    		System.out.println(e.toString());
+    	}*/
+    	
+		mv.setViewName("exchangePage");
+		mv.addObject("listExchanges",elist);
+		return mv;
 	}
+    
+    /*@PostMapping(value="/create_purchase")
+    public String addAndViewCart(String exchange_code, double transaction_amount, double stock_value ,int stock_id) {
+    	
+    	 Order reqOrder = new Order();
+    	 reqOrder.setUser_id(1);//customuserdetails.getId()); //later replace
+    	 reqOrder.setStock_id(stock_id);
+    	 reqOrder.setExchange_code(exchange_code);
+    	 reqOrder.setType("BUY");
+    	 reqOrder.setTransaction_amount(transaction_amount);
+    	 reqOrder.setTransaction_cost(0.0); //replace later transaction_amount * STOCK_VALUE
+    	 reqOrder.setDateTime(null);
+    	 
+    	 orderservice.addToCart(reqOrder);
+    	 
+    	 return "Cart"; //
+    }*/
     
     @RequestMapping(value="/viewStockOptions", method = RequestMethod.GET)
     public ModelAndView viewStockOptions(@ModelAttribute Exchange exchange) {

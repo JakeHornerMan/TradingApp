@@ -16,14 +16,14 @@ public class Order {
 	private int order_id;
 	private int user_id;
 	private int stock_id;
-	private int exchange_code;
+	private String exchange_code;
 	private String type;
 	private double transaction_amount;
 	private double transaction_cost;
 	private LocalDateTime dateTime;
 	
 	
-	public Order(int order_id, int user_id, int stock_id, int exchange_code, String type, double transaction_amount,
+	public Order(int order_id, int user_id, int stock_id, String exchange_code, String type, double transaction_amount,
 			double transaction_cost, LocalDateTime dateTime) {
 		super();
 		this.order_id = order_id;
@@ -60,11 +60,11 @@ public class Order {
 		this.stock_id = stock_id;
 	}
 
-	public int getExchange_code() {
+	public String getExchange_code() {
 		return exchange_code;
 	}
 
-	public void setExchange_code(int exchange_code) {
+	public void setExchange_code(String exchange_code) {
 		this.exchange_code = exchange_code;
 	}
 
