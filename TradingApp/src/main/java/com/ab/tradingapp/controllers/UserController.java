@@ -66,9 +66,10 @@ public class UserController {
         return new ModelAndView("index");
     }
     
-    @PostMapping("/ExchangePage")
-    @ResponseBody 
-    public ModelAndView getStockId(@RequestParam int stockId){
+    @RequestMapping(value = "/ExchangePage/{stock_id}", method = RequestMethod.POST)
+    //@ResponseBody 
+    public ModelAndView getStockId(
+    		@PathVariable int stockId ){
 		
     	ModelAndView mav = new ModelAndView();
     	List<Exchange> e = exchangeservice.FindAllExchagesForStock(stockId);

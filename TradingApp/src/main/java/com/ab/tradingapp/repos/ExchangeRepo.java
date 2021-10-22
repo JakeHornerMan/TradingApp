@@ -13,11 +13,11 @@ import com.ab.tradingapp.models.Exchange;
 @Repository
 public interface ExchangeRepo extends JpaRepository<Exchange,Integer> {
 
-	@Query("SELECT e FROM Exchange e WHERE e.exchange_code =: exchangeCode AND e.stock_id =: stockId")
+	@Query("SELECT e FROM Exchange e WHERE e.exchange_code =:exchangeCode AND e.stock_id =:stockId")
 	Exchange viewExangesFromExchangeCodeAndStockId(
 			@Param("exchangeCode") String exchangeCode, @Param("stockId") int stockId);
 	
-	@Query("SELECT e FROM Exchange e WHERE e.stock_id =: stockId")
+	@Query("SELECT e FROM Exchange e WHERE e.stock_id =:stockId")
 	List<Exchange> viewAllExangesFromStockId(@Param("stockId") int stockId);
 	
 }

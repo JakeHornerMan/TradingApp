@@ -16,9 +16,9 @@ public class StockService {
 	@Autowired
 	StockRespo stockrespo;
 
-	public List<Stocks> viewStocks () {
-		return stockrespo.viewStock();
-	}
+//	public List<Stocks> viewStocks () {
+//		return stockrespo.viewStock();
+//	}
 	
 	public List<Stocks> listAll() {
         return stockrespo.findAll();
