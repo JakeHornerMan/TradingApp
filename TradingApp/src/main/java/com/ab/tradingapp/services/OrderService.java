@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.stereotype.Service;
 
 import com.ab.tradingapp.models.Order;
@@ -13,6 +14,7 @@ import com.ab.tradingapp.models.Wallet;
 import com.ab.tradingapp.repos.OrderRepo;
 
 @Service
+@Configurable
 public class OrderService {
 	
 	@Autowired
@@ -40,7 +42,7 @@ public class OrderService {
 	}
 	
 	public void save(Order o) {
-	     //repo.save(o);
+	     repo.save(o);
 	}
 
 }
