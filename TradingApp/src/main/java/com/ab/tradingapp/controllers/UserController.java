@@ -79,7 +79,9 @@ public class UserController {
     }
 
     @RequestMapping("/cart")
-    public ModelAndView viewCart() {
+    public ModelAndView viewCart(Model model) {
+        Exchange exchangeObj = new Exchange();
+        model.addAttribute("exchangeObj", exchangeObj);
         return new ModelAndView("cart");
     }
     
@@ -92,7 +94,9 @@ public class UserController {
 	public ModelAndView getExchagesByStockId(@RequestParam("stock_id") int stock_id, Model model) {
 
         Order order = new Order();
+        Exchange exchangeObj = new Exchange();
         model.addAttribute("order", order);
+        model.addAttribute("exchangeObj", exchangeObj);
     	
     	ModelAndView mv = new ModelAndView();
     	List<Exchange> elist = exchangeservice.FindAllExchagesForStock(stock_id);
@@ -108,8 +112,9 @@ public class UserController {
 	}
     
     @PostMapping(value="/create_purchase")
-    public ModelAndView addAndViewCart(@RequestParam("exchange_code") String exchange_code,
-    		@ModelAttribute("transaction_amount") double transaction_amount, @ModelAttribute("order") Order reqOrder) {
+    public ModelAndView addAndViewCart(@ModelAttribute("exchange_code") String exchange_code,
+    		@ModelAttribute("transaction_amount") double transaction_amount, @ModelAttribute("order") Order reqOrder,
+                                       @ModelAttribute("exchangeObj") Exchange exchangeObj) {
     	
 		 List<Exchange> exchangeList = exchangeservice.listAll();
          
