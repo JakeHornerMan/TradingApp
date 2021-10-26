@@ -2,6 +2,7 @@ package com.ab.tradingapp.services;
 
 import java.util.List;
 
+import com.ab.tradingapp.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,5 +22,9 @@ public class ExchangeService {
 	public List<Exchange> FindAllExchagesForStock(int stockId) {
 		return exchangerepo.viewAllExangesFromStockId(stockId);
 	}
-	
+
+
+	public List<Exchange> listAll() {
+		return exchangerepo.findAll();
+	}
 }

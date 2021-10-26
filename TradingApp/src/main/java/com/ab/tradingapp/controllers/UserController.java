@@ -76,9 +76,17 @@ public class UserController {
     public ModelAndView viewLogout() {
         return new ModelAndView("index");
     }
+
+    @RequestMapping("/cart")
+    public ModelAndView viewCart() {
+        return new ModelAndView("cart");
+    }
     
     @RequestMapping(value="/exchangePage")
-	public ModelAndView getExchagesByStockId(@RequestParam("stock_id") int stock_id) {
+	public ModelAndView getExchagesByStockId(@RequestParam("stock_id") int stock_id, Model model) {
+
+        Order order = new Order();
+        model.addAttribute("order", order);
     	
     	ModelAndView mv = new ModelAndView();
     	List<Exchange> elist = exchangeservice.FindAllExchagesForStock(stock_id);
@@ -95,20 +103,18 @@ public class UserController {
     
     @PostMapping(value="/create_purchase")
     public String addAndViewCart(@ModelAttribute("exchange_code") String exchange_code,
-    		@ModelAttribute("transaction_amount") double transaction_amount, @ModelAttribute("Order") Order reqOrder) {
+    		@ModelAttribute("transaction_amount") double transaction_amount, @ModelAttribute("order") Order reqOrder) {
     	
-		 Exchange ex = exchangeservice.FindExchageInfo(exchange_code, currentStockId);
-		 
-    	 System.out.println(ex.toString());
-    	 
-    	 reqOrder.setUser_id(detailservice.returnUserID());
+		 List<Exchange> exchangeList = exchangeservice.listAll();
+         
+    	 reqOrder.setUser_id(1);
     	 reqOrder.setStock_id(currentStockId);
     	 reqOrder.setExchange_code(exchange_code);
     	 reqOrder.setType("BUY");
     	 reqOrder.setTransaction_amount(transaction_amount);
     	 
     	  
-    	 double cost = (ex.getStock_value()*transaction_amount)+ex.getStock_fee();
+    	 double cost = (exchangeList.get(0).getStock_value()*transaction_amount)+exchangeList.get(0).getStock_fee();
     	 
     	 reqOrder.setTransaction_cost(cost); //replace later transaction_amount * STOCK_VALUE
     	 
@@ -123,7 +129,7 @@ public class UserController {
 //    	 v.addObject("CreatePurchase", d);
 //    	 v.setViewName("/create_purchase");
     	 
-    	 return "Cart"; 
+    	 return "cart";
     }
     
     @RequestMapping(value="/viewStockOptions", method = RequestMethod.GET)
