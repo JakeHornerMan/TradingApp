@@ -1,15 +1,10 @@
-<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xml:lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-
-<h1> Order Success!</h1>
 		<div>
            <h1>Cart</h1>
         </div>
@@ -34,7 +29,7 @@
             </table>
         </div>
         <h2>Total Price : </h2> <h2 th:text="${endPrice}"></h2>
-        <form action="#" th:action="@{/purchaseCart}" method="post">
+        <form action="#" th:action="@{/purchaseCart}" th:object="${purchase}" method="post">
         	<button type="submit" id="btn-register">Purchase</button>
         </form>
 
