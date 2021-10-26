@@ -19,6 +19,7 @@ import com.ab.tradingapp.services.UserService;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -34,7 +35,7 @@ public class UserController {
     private ExchangeService exchangeservice;
     
     @Autowired
-    private CustomUserDetailsService customUserService;
+    private CustomUserDetailsService detailservice;
 
     @Autowired
     private OrderService orderservice;
@@ -82,6 +83,11 @@ public class UserController {
         return new ModelAndView("cart");
     }
     
+    @RequestMapping("/wallet")
+    public ModelAndView viewWallet() {
+        return new ModelAndView("wallet");
+    }
+    
     @RequestMapping(value="/exchangePage")
 	public ModelAndView getExchagesByStockId(@RequestParam("stock_id") int stock_id, Model model) {
 
@@ -106,8 +112,8 @@ public class UserController {
     		@ModelAttribute("transaction_amount") double transaction_amount, @ModelAttribute("order") Order reqOrder) {
     	
 		 List<Exchange> exchangeList = exchangeservice.listAll();
-
-    	 reqOrder.setUser_id(customUserService.returnUserID());
+         
+    	 reqOrder.setUser_id(1);
     	 reqOrder.setStock_id(currentStockId);
     	 reqOrder.setExchange_code(exchange_code);
     	 
@@ -125,22 +131,34 @@ public class UserController {
     	 
     	 orderservice.addToCart(reqOrder);
     	 
+    	 List<Order> or = orderservice.getCart();
+    	 double endPrice = 0;
+    	 for(Order o : or) {
+    		 endPrice += o.getTransaction_cost();
+    	 }
+    	 
     	 //Integer d = orderservice.createOrder(reqOrder.getUser_id(), reqOrder.getStock_id(), reqOrder.getExchange_code(), reqOrder.getType(), reqOrder.getTransaction_amount(), cost, Date); 
     	 
     	 ModelAndView mav = new ModelAndView (); 
-    	 mav.addObject("listCart", orderservice.getCart());
+    	 mav.addObject("listCart", or);
+    	 mav.addObject("endPrice", endPrice);
     	 mav.setViewName("/cart");
     	 
     	 return mav;
     }
     
-    /*@PostMapping(value="/wallet")
+    @PostMapping(value="/purchaseCart")
     public ModelAndView purchaseCart() {
 		
+    	System.out.println("It was CALLED!");
+    	orderservice.purchaseCart();
     	
-    	return null;
-    	
-    }*/
+    	ModelAndView mav = new ModelAndView (); 
+	   	mav.addObject("listCart", orderservice.getCart());
+	   	mav.setViewName("/purchaseSummary");
+	   	
+	   	return mav;
+    }
     
     @RequestMapping(value="/viewStockOptions", method = RequestMethod.GET)
     public ModelAndView viewStockOptions(@ModelAttribute Exchange exchange) {

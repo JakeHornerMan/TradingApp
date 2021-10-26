@@ -20,7 +20,7 @@
                     <th>Exchange Code</th>
                     <th>Type</th>
                     <th>Amount of Assets</th>
-                    <th>Commission Cost</th>
+                    <th>Asset Cost</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -28,14 +28,15 @@
                     <td th:text="${cart.exchange_code}">Exchange Code</td>
                     <td th:text="${cart.type}">Type</td>
                     <td th:text="${cart.transaction_amount}">Amount of Assets</td>
-                    <td th:text="${cart.transaction_cost}">Exchange Code</td>
+                    <td th:text="${cart.transaction_cost}">Asset Cost</td>
                 </tr>
                 </tbody>
             </table>
         </div>
-        <!-- <form action="/purchaseCart" method="post">
-        	<a th:href="@{/purchaseCart()}" th:text="View" class="button"></a>
-        </form> -->
+        <h2>Total Price : </h2> <h2 th:text="${endPrice}"></h2>
+        <form action="#" th:action="@{/purchaseCart}" method="post">
+        	<button type="submit" id="btn-register">Purchase</button>
+        </form>
 
 </body>
 </html>
