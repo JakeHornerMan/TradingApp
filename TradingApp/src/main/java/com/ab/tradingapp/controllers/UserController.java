@@ -102,7 +102,7 @@ public class UserController {
 	}
     
     @PostMapping(value="/create_purchase")
-    public ModelAndView addAndViewCart(@ModelAttribute("exchange_code") String exchange_code,
+    public ModelAndView addAndViewCart(@RequestParam("exchange_code") String exchange_code,
     		@ModelAttribute("transaction_amount") double transaction_amount, @ModelAttribute("order") Order reqOrder) {
     	
 		 List<Exchange> exchangeList = exchangeservice.listAll();
@@ -110,6 +110,8 @@ public class UserController {
     	 reqOrder.setUser_id(customUserService.returnUserID());
     	 reqOrder.setStock_id(currentStockId);
     	 reqOrder.setExchange_code(exchange_code);
+    	 
+    	 System.out.print(reqOrder.getExchange_code());
     	 reqOrder.setType("BUY");
     	 reqOrder.setTransaction_amount(transaction_amount);
     	 
