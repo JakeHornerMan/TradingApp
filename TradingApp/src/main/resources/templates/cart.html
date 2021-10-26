@@ -7,6 +7,32 @@
 <body>
 
 <h1> Order Success!</h1>
+		<div>
+           <h1>Cart</h1>
+        </div>
+        <div>
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Exchange Code</th>
+                    <th>Type</th>
+                    <th>Amount of Assets</th>
+                    <th>Commission Cost</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="cart: ${listCart}">
+                    <td th:text="${cart.exchange_code}">Exchange Code</td>
+                    <td th:text="${cart.type}">Type</td>
+                    <td th:text="${cart.transaction_amount}">Amount of Assets</td>
+                    <td th:text="${cart.transaction_cost}">Exchange Code</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- <form action="/purchaseCart" method="post">
+        	<a th:href="@{/purchaseCart()}" th:text="View" class="button"></a>
+        </form> -->
 
 </body>
 </html>

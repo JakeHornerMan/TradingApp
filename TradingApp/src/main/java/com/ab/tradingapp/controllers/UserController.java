@@ -102,7 +102,7 @@ public class UserController {
 	}
     
     @PostMapping(value="/create_purchase")
-    public String addAndViewCart(@ModelAttribute("exchange_code") String exchange_code,
+    public ModelAndView addAndViewCart(@ModelAttribute("exchange_code") String exchange_code,
     		@ModelAttribute("transaction_amount") double transaction_amount, @ModelAttribute("order") Order reqOrder) {
     	
 		 List<Exchange> exchangeList = exchangeservice.listAll();
@@ -125,12 +125,20 @@ public class UserController {
     	 
     	 //Integer d = orderservice.createOrder(reqOrder.getUser_id(), reqOrder.getStock_id(), reqOrder.getExchange_code(), reqOrder.getType(), reqOrder.getTransaction_amount(), cost, Date); 
     	 
- // 	 ModelAndView v = new ModelAndView (); 
-//    	 v.addObject("CreatePurchase", d);
-//    	 v.setViewName("/create_purchase");
+    	 ModelAndView mav = new ModelAndView (); 
+    	 mav.addObject("listCart", orderservice.getCart());
+    	 mav.setViewName("/cart");
     	 
-    	 return "cart";
+    	 return mav;
     }
+    
+    /*@PostMapping(value="/wallet")
+    public ModelAndView purchaseCart() {
+		
+    	
+    	return null;
+    	
+    }*/
     
     @RequestMapping(value="/viewStockOptions", method = RequestMethod.GET)
     public ModelAndView viewStockOptions(@ModelAttribute Exchange exchange) {
