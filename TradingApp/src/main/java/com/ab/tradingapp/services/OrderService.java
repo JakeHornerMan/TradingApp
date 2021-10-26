@@ -47,9 +47,8 @@ public class OrderService {
 	     repo.save(o);
 	}
 	
-	public Integer createOrder (int user_id, int stock_id, String exchange_code, String type, double transaction_amount, double transaction_cost, LocalDateTime date ) {
+	/*public Integer createOrder (int user_id, int stock_id, String exchange_code, String type, double transaction_amount, double transaction_cost, LocalDateTime date ) {
 		return repo.insertItemsIntoOrders(user_id, stock_id, exchange_code,  type, transaction_amount, transaction_cost, date);
-	}
+	}*/
 	
-
 }

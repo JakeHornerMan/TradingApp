@@ -39,6 +39,8 @@ public class UserController {
     @Autowired
     private OrderService orderservice;
     // VIEW HANDLER METHODS
+    
+    private int currentStockId;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView showLanding() {
@@ -81,6 +83,7 @@ public class UserController {
     	ModelAndView mv = new ModelAndView();
     	List<Exchange> elist = exchangeservice.FindAllExchagesForStock(stock_id);
     	
+    	currentStockId = elist.get(0).getStock_id();
     	/*for (Exchange e : elist) {
     		System.out.println(e.toString());
     	}*/
@@ -91,20 +94,21 @@ public class UserController {
 	}
     
     @PostMapping(value="/create_purchase")
-    public String addAndViewCart(String exchange_code, int stock_id, double transaction_amount, double stock_value , double stock_fee,
-    		@ModelAttribute("User") User user,
-    		@ModelAttribute ("Order") Order order
-    		) {
+    public String addAndViewCart(@ModelAttribute("exchange_code") String exchange_code,
+    		@ModelAttribute("transaction_amount") double transaction_amount, @ModelAttribute("Order") Order reqOrder) {
     	
-    	 Order reqOrder = new Order();
+		 Exchange ex = exchangeservice.FindExchageInfo(exchange_code, currentStockId);
+		 
+    	 System.out.println(ex.toString());
+    	 
     	 reqOrder.setUser_id(detailservice.returnUserID());
-    	 reqOrder.setStock_id(stock_id);
+    	 reqOrder.setStock_id(currentStockId);
     	 reqOrder.setExchange_code(exchange_code);
     	 reqOrder.setType("BUY");
     	 reqOrder.setTransaction_amount(transaction_amount);
     	 
     	  
-    	 double cost = (stock_value*transaction_amount)+stock_fee;
+    	 double cost = (ex.getStock_value()*transaction_amount)+ex.getStock_fee();
     	 
     	 reqOrder.setTransaction_cost(cost); //replace later transaction_amount * STOCK_VALUE
     	 
@@ -113,7 +117,7 @@ public class UserController {
     	 
     	 orderservice.addToCart(reqOrder);
     	 
-    	 Integer d = orderservice.createOrder(reqOrder.getUser_id(), reqOrder.getStock_id(), reqOrder.getExchange_code(), reqOrder.getType(), reqOrder.getTransaction_amount(), cost, Date); 
+    	 //Integer d = orderservice.createOrder(reqOrder.getUser_id(), reqOrder.getStock_id(), reqOrder.getExchange_code(), reqOrder.getType(), reqOrder.getTransaction_amount(), cost, Date); 
     	 
  // 	 ModelAndView v = new ModelAndView (); 
 //    	 v.addObject("CreatePurchase", d);
