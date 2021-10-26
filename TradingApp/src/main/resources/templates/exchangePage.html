@@ -40,17 +40,18 @@
 	          	method="post" style="max-width: 600px; margin: 0 auto;">
 		        <div class="m-3">
 		            <div class="form-group row">
-		                <label class="form_label">Exchage Brooker: </label>
+		                <label class="form_label">Exchange Broker: </label>
 		                <div class="col-8">
 		                	<select>
 							  <option  th:each="exchange: ${listExchanges}" value="${exchange.exchange_code}" th:text="${exchange.exchange_code}"/>exchange_code</option>
 							</select>
 		                </div>
 		            </div>
+		          
 		            <div class="form-group row">
 		                <label class="form_label">Password: </label>
 		                <div class="col-8">
-		                    <!-- <input type="number" th:field="*{stock_amount}" class="form-control" required/> -->
+		                    <!--  <input type="number" th:field="*{stock_amount}" placeholder="integer" />   -->
 		                </div>
 		            </div>
 		            <div>
@@ -59,6 +60,11 @@
 		        </div>
 		    </form>
 	    </div>
+	    
+	 <!--    <form action="/create_purchase" method="post">
+			<label>Enter Stock Amount</label>
+			<input type="text" name="transactionAmount" id="transactionAmount"/>
+		</form> -->
 	
 	</body>
 </html>

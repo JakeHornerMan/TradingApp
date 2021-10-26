@@ -18,12 +18,13 @@ import com.ab.tradingapp.services.StockService;
 import com.ab.tradingapp.services.UserService;
 
 import java.security.Principal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
 public class UserController {
 
-    @Autowired
+	@Autowired
     private UserService service;
     
     @Autowired
@@ -90,7 +91,10 @@ public class UserController {
 	}
     
     @PostMapping(value="/create_purchase")
-    public String addAndViewCart(String exchange_code, double transaction_amount, double stock_value ,int stock_id, double stock_fee) {
+    public String addAndViewCart(String exchange_code, int stock_id, double transaction_amount, double stock_value , double stock_fee,
+    		@ModelAttribute("User") User user,
+    		@ModelAttribute ("Order") Order order
+    		) {
     	
     	 Order reqOrder = new Order();
     	 reqOrder.setUser_id(detailservice.returnUserID());
@@ -99,20 +103,28 @@ public class UserController {
     	 reqOrder.setType("BUY");
     	 reqOrder.setTransaction_amount(transaction_amount);
     	 
+    	  
     	 double cost = (stock_value*transaction_amount)+stock_fee;
     	 
     	 reqOrder.setTransaction_cost(cost); //replace later transaction_amount * STOCK_VALUE
-    	 reqOrder.setDateTime(null);
+    	 
+    	 LocalDateTime Date = LocalDateTime.now(); 
+    	 reqOrder.setDateTime(Date);
     	 
     	 orderservice.addToCart(reqOrder);
     	 
-    	 return "Cart"; //
+    	 Integer d = orderservice.createOrder(reqOrder.getUser_id(), reqOrder.getStock_id(), reqOrder.getExchange_code(), reqOrder.getType(), reqOrder.getTransaction_amount(), cost, Date); 
+    	 
+ // 	 ModelAndView v = new ModelAndView (); 
+//    	 v.addObject("CreatePurchase", d);
+//    	 v.setViewName("/create_purchase");
+    	 
+    	 return "Cart"; 
     }
     
     @RequestMapping(value="/viewStockOptions", method = RequestMethod.GET)
     public ModelAndView viewStockOptions(@ModelAttribute Exchange exchange) {
 		
-    	
     	return null;
     	
     }
