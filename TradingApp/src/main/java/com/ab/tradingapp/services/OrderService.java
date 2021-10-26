@@ -39,12 +39,17 @@ public class OrderService {
 		
 		for(Order o : cart) {
 			o.setDateTime(now);
-			save(o);
+			//save(o);
+			saveMan(o);
 		}
 	}
 	
 	public void save(Order o) {
 	     repo.save(o);
+	}
+	
+	public void saveMan(Order o) {
+		repo.insertItemsIntoOrders(o.getUser_id(), o.getStock_id(), o.getExchange_code(), o.getType(), o.getTransaction_amount(), o.getTransaction_cost(),o.getDateTime());
 	}
 	
 	/*public Integer createOrder (int user_id, int stock_id, String exchange_code, String type, double transaction_amount, double transaction_cost, LocalDateTime date ) {

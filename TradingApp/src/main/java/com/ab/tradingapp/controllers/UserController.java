@@ -154,8 +154,7 @@ public class UserController {
     	orderservice.purchaseCart();
     	
     	ModelAndView mav = new ModelAndView (); 
-	   	mav.addObject("listCart", orderservice.getCart());
-	   	mav.setViewName("/purchaseSummary");
+	   	mav.setViewName("/wallet");
 	   	
 	   	return mav;
     }

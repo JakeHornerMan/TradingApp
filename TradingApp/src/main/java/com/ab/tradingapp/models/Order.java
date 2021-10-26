@@ -22,7 +22,6 @@ public class Order {
 	private double transaction_cost;
 	private LocalDateTime dateTime;
 	
-	
 	public Order(int order_id, int user_id, int stock_id, String exchange_code, String type, double transaction_amount,
 			double transaction_cost, LocalDateTime dateTime) {
 		super();
