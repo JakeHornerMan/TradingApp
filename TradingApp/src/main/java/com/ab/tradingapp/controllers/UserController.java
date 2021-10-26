@@ -34,7 +34,7 @@ public class UserController {
     private ExchangeService exchangeservice;
     
     @Autowired
-    private CustomUserDetailsService detailservice;
+    private CustomUserDetailsService customUserService;
 
     @Autowired
     private OrderService orderservice;
@@ -106,8 +106,8 @@ public class UserController {
     		@ModelAttribute("transaction_amount") double transaction_amount, @ModelAttribute("order") Order reqOrder) {
     	
 		 List<Exchange> exchangeList = exchangeservice.listAll();
-         
-    	 reqOrder.setUser_id(1);
+
+    	 reqOrder.setUser_id(customUserService.returnUserID());
     	 reqOrder.setStock_id(currentStockId);
     	 reqOrder.setExchange_code(exchange_code);
     	 reqOrder.setType("BUY");
