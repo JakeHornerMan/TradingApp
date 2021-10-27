@@ -32,6 +32,10 @@ public class OrderService {
 		return cart;
 	}
 	
+	public void deleteCartItem(Order o) {
+		cart.remove(o);
+	}
+	
 	public void purchaseCart() {
 		
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
