@@ -85,11 +85,18 @@ public class UserController {
     }
 
     @RequestMapping("/cart")
-    public ModelAndView viewCart(Model model) {
-    	ModelAndView mv = new ModelAndView();
-        mv.addObject("listCart", orderservice.getCart());
-        mv.setViewName("cart");
-        return mv;
+    public ModelAndView viewCart() {
+        List<Order> or = orderservice.getCart();
+        double endPrice = 0;
+	   	for(Order o : or) {
+	   		 endPrice += o.getTransaction_cost();
+	   	}
+        ModelAndView mav = new ModelAndView (); 
+	   	mav.addObject("listCart", or);
+	   	mav.addObject("endPrice", endPrice);
+	   	mav.setViewName("/cart");
+   	 
+	   	return mav;
     }
     
 
