@@ -7,49 +7,66 @@ import javax.persistence.Id;
 public class Wallet {
 	
 	@Id
-	private int userId;
-	private int stockId;
-	private double stockAmount;
-
+	private int wallet_id;
+	private int user_Id;
+	private int stock_Id;
+	private double stock_Amount;
 	
 	public Wallet() {}
 
-	public Wallet(int userId, int stockId, double stockAmount) {
+	public Wallet(int wallet_id, int user_Id, int stock_Id, double stock_Amount) {
 		super();
-		
-		this.userId = userId;
-		this.stockId = stockId;
-		this.stockAmount = stockAmount;
+		this.wallet_id = wallet_id;
+		this.user_Id = user_Id;
+		this.stock_Id = stock_Id;
+		this.stock_Amount = stock_Amount;
 	}
 
 
-	public int getUserId() {
-		return userId;
+	public int getWallet_id() {
+		return wallet_id;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+
+	public void setWallet_id(int wallet_id) {
+		this.wallet_id = wallet_id;
 	}
 
-	public int getStockId() {
-		return stockId;
+
+	public int getUser_Id() {
+		return user_Id;
 	}
 
-	public void setStockId(int stockId) {
-		this.stockId = stockId;
+
+	public void setUser_Id(int user_Id) {
+		this.user_Id = user_Id;
 	}
 
-	public double getStockAmount() {
-		return stockAmount;
+
+	public int getStock_Id() {
+		return stock_Id;
 	}
 
-	public void setStockAmount(double stockAmount) {
-		this.stockAmount = stockAmount;
+
+	public void setStock_Id(int stock_Id) {
+		this.stock_Id = stock_Id;
 	}
 
-//	@Override
-//	public String toString() {
-//		return "Wallet [userId=" + userId + ", stockId=" + stockId + ", stockAmount="
-//				+ stockAmount + "]";
-//	}
+
+	public double getStock_Amount() {
+		return stock_Amount;
+	}
+
+
+	public void setStock_Amount(double stock_Amount) {
+		this.stock_Amount = stock_Amount;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Wallet [wallet_id=" + wallet_id + ", user_Id=" + user_Id + ", stock_Id=" + stock_Id + ", stock_Amount="
+				+ stock_Amount + "]";
+	}
+	
 }

@@ -8,21 +8,18 @@
 <body>
 <<<<<<< HEAD
 <div class="background">
-<div>
-    <ul class="nav" style="margin-top:-1%; font-size: 150%">
-        <li><a href="dashboard">DASHBOARD</a></li>
-        <li><a href="wallet">WALLET</a></li>
-        <li><a href="cart">CART</a></li>
-        <li style="float:right"><a href="/logout">LOGOUT</a></li>
-    </ul>
-</div>
+	<div>
+	    <ul class="nav" style="margin-top:-1%; font-size: 150%">
+	        <li><a href="dashboard">DASHBOARD</a></li>
+	        <li><a href="wallet">WALLET</a></li>
+	        <li><a href="cart">CART</a></li>
+	        <li style="float:right"><a href="/logout">LOGOUT</a></li>
+	    </ul>
+	</div>
 
 <h1 style="margin-top: 3%">Wallet</h1>
-</div>
-=======
-<h1>Wallet</h1>
 	<div>
-            <table class="table table-striped table-bordered">
+            <table class="table table-striped table-bordered" style="text-color:white;">
                 <thead class="thead-dark">
                 <tr>
                     <th>Stock ID</th>
@@ -31,12 +28,13 @@
                 </thead>
                 <tbody>
                 <tr th:each="wallet: ${listWallet}">
-                    <td th:text="${wallet.stockId}">Stock ID</td>
-                    <td th:text="${wallet.stockAmount}">Stock Amount</td>
+                    <td th:text="${wallet.stock_Id}">Stock ID</td>
+                    <td th:text="${wallet.stock_Amount}">Stock Amount</td>
                 </tr>
                 </tbody>
             </table>
         </div>
->>>>>>> 4b9482de2e8cc9df5b4eceba46530c0ae5d5e941
+</div>
+
 </body>
 </html>

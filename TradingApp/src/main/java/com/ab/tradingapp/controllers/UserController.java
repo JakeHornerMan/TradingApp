@@ -91,10 +91,10 @@ public class UserController {
         return new ModelAndView("cart");
     }
     
-    @RequestMapping("/wallet")
+    /*@RequestMapping("/wallet")
     public ModelAndView viewWallet() {
         return new ModelAndView("wallet");
-    }
+    }*/
     
     @RequestMapping(value="/exchangePage")
 	public ModelAndView getExchagesByStockId(@RequestParam("stock_id") int stock_id, Model model) {
@@ -165,8 +165,6 @@ public class UserController {
     	addToWallet(orderservice.getCart());
     	orderservice.clearCart();
     	
-    	
-    	
     	ModelAndView mav = new ModelAndView (); 
 	   	mav.setViewName("/cart");
 	   	
@@ -177,9 +175,9 @@ public class UserController {
 		
 		for(Order o : cart) {
 			Wallet w = new Wallet();
-			w.setUserId(detailservice.returnUserID());
-			w.setStockId(o.getStock_id());
-			w.setStockAmount(o.getTransaction_amount());
+			w.setUser_Id(detailservice.returnUserID());
+			w.setStock_Id(o.getStock_id());
+			w.setStock_Amount(o.getTransaction_amount());
 			
 			walletservice.save(w);
 		}
@@ -188,13 +186,20 @@ public class UserController {
 	@GetMapping(value="/wallet")
     public ModelAndView getWallet() {
 		
-    	List<Wallet> wallet = walletservice.listAll();
+    	List<Wallet> w1 = walletservice.listAll();
+    	List<Wallet> wallet = new ArrayList<>();
+    	
+    	for(Wallet w : w1) {
+    		if(w.getUser_Id() == detailservice.returnUserID()) {
+    			wallet.add(w);
+    		}
+    	}
     	
     	ModelAndView mav = new ModelAndView (); 
 	   	mav.addObject("listWallet", wallet);
 	   	mav.setViewName("/wallet");
 		
-    	return null;
+    	return mav;
     	
     }
     

@@ -32,4 +32,8 @@ public class WalletService {
 	public void delete(int userID) {
 	     repo.deleteById(userID);
 	}
+	
+	/*public List<Wallet> listAllByID(int user_id) {
+		return repo.getWalletItemsByUserId(user_id);
+	}*/
 }
