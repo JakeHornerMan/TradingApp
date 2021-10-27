@@ -2,9 +2,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xml:lang="en">
 <head>
     <meta charset="UTF-8">
+    <link th:href="@{css/external.css}" rel="stylesheet"/><!--link to external .css stylesheet-->
     <title>Title</title>
 </head>
 <body>
+<div class="background">
+<div>
+    <ul class="nav" style="margin-top:-1%; font-size: 150%">
+        <li><a href="dashboard">DASHBOARD</a></li>
+        <li><a href="wallet">WALLET</a></li>
+        <li><a href="cart">CART</a></li>
+        <li style="float:right"><a href="/logout">LOGOUT</a></li>
+    </ul>
+</div>
 		<div>
            <h1>Cart</h1>
         </div>
@@ -32,6 +42,6 @@
         <form action="#" th:action="@{/purchaseCart}" th:object="${purchase}" method="post">
         	<button type="submit" id="btn-register">Purchase</button>
         </form>
-
+</div>
 </body>
 </html>

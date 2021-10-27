@@ -2,10 +2,21 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+    <link th:href="@{css/external.css}" rel="stylesheet"/><!--link to external .css stylesheet-->
 <title>Wallet</title>
 </head>
 <body>
-<h1>Wallet</h1>
-	
+<div class="background">
+<div>
+    <ul class="nav" style="margin-top:-1%; font-size: 150%">
+        <li><a href="dashboard">DASHBOARD</a></li>
+        <li><a href="wallet">WALLET</a></li>
+        <li><a href="cart">CART</a></li>
+        <li style="float:right"><a href="/logout">LOGOUT</a></li>
+    </ul>
+</div>
+
+<h1 style="margin-top: 3%">Wallet</h1>
+</div>
 </body>
 </html>
