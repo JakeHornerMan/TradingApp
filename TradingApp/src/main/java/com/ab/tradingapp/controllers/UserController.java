@@ -91,10 +91,12 @@ public class UserController {
         return new ModelAndView("cart");
     }
     
-    /*@RequestMapping("/wallet")
-    public ModelAndView viewWallet() {
-        return new ModelAndView("wallet");
-    }*/
+
+//    @RequestMapping("/wallet")
+//    public ModelAndView viewWallet() {
+//        return new ModelAndView("wallet");
+//    }
+
     
     @RequestMapping(value="/exchangePage")
 	public ModelAndView getExchagesByStockId(@RequestParam("stock_id") int stock_id, Model model) {
