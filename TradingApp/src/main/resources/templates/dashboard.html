@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org" xml:lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/><!-- Bootstrap CSS -->
@@ -9,9 +9,9 @@
     <title>Dashboard</title>
 </head>
 <body>
-<div class="header">
+<div class="header" style="background-color: #454545; padding-bottom: 2%">
     <div>
-        <ul class="nav" style="margin-top:-1%; font-size: 150%">
+        <ul class="nav">
             <li><a href="dashboard">DASHBOARD</a></li>
             <li><a href="wallet">WALLET</a></li>
             <li><a href="cart">CART</a></li>
@@ -19,17 +19,16 @@
         </ul>
     </div>
     <div>
-        <h1 style="margin-top:4%">Welcome to your dashboard &nbsp[[${#request.userPrincipal.principal.username}]]</h1>
-        <h2>Here you can access your personal trades...</h2>
+        <h1 style="margin-top:2.5%">WELCOME TO YOUR DASHBOARD &nbsp[[${#request.userPrincipal.principal.username}]]</h1>
     </div>
 </div>
 <div class="background">
     <div>
-    <h1 style="margin-top:5%; color:white">List of Stocks</h1>
+    <h1 style="color:white; padding-top: 3%">LIST OF STOCKS</h1>
 </div>
 <div>
     <table class="table table-dark">
-        <thead class=>
+        <thead>
         <tr>
             <th scope="col">Stock ID</th>
             <th scope="col">Stock Name</th>

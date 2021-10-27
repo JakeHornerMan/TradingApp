@@ -22,7 +22,6 @@ body {
     padding-top: 1%;
     color: white;
     font-family: Arial, Verdana, sans-serif;
-    background-color: #454545;
 }
 
 input[type=text], input[type=password], input[type=email]{
@@ -88,19 +87,18 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, sel
 }
 
 .nav ul {
-    width: 70%; /*makes the menu width the same as the window width*/
-    margin-top: -10%;
+    width: 90%; /*makes the menu width the same as the window width*/
+    /*margin-top: -10%;*/
     /*padding-top: 1%;*/
     font-family:Arial, Verdana, sans-serif;
 }
 
 .nav li {
     float: left; /*floats list items left*/
-    /*clear:right;*/
-    /*padding-left:9.3%;*/
-    margin-top: -10%;
+    clear:right;
+    padding: 0 5% 0 5%;
+    margin-left: 5%;
     font-size:150%;
-    /*padding-top: 1%;*/
     list-style: none; /*removes bullets from the list*/
     color: white;
     text-decoration: none;
@@ -108,7 +106,7 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, sel
 
 .nav li a {
     display: block; /*fills up the entire list item and makes the whole area clickable*/
-    /*padding: 9px 25px;*/
+
     text-decoration: none; /*removes the underline from the anchor*/
     font-weight: bold;
     color: white;
@@ -116,5 +114,4 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, sel
 
 .nav li a:hover {
     color: #03b8fa; opacity: 50%;
-    background-color: #fff;
 }
