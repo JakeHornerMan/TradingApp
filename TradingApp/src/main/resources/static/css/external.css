@@ -12,7 +12,7 @@ body {
     background-size: cover;
     opacity: 90%;
     min-height: 100vh; /* so background stays full size of viewport*/
-    background-image: url('../images/bg.jpg');
+    background-color: #1c1b1b;
     width: 100%;
 }
 
@@ -113,5 +113,5 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, sel
 }
 
 .nav li a:hover {
-    color: #03b8fa; opacity: 50%;
+    color: steelblue;
 }
