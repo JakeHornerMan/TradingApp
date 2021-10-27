@@ -86,9 +86,10 @@ public class UserController {
 
     @RequestMapping("/cart")
     public ModelAndView viewCart(Model model) {
-        Exchange exchangeObj = new Exchange();
-        model.addAttribute("exchangeObj", exchangeObj);
-        return new ModelAndView("cart");
+    	ModelAndView mv = new ModelAndView();
+        mv.addObject("listCart", orderservice.getCart());
+        mv.setViewName("cart");
+        return mv;
     }
     
 
