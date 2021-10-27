@@ -10,7 +10,6 @@ body {
 }
 .background {
     background-size: cover;
-    opacity: 90%;
     min-height: 100vh; /* so background stays full size of viewport*/
     background-color: #1c1b1b;
     width: 100%;
