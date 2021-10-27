@@ -4,6 +4,8 @@ import com.ab.tradingapp.models.Exchange;
 import com.ab.tradingapp.models.Order;
 import com.ab.tradingapp.models.Stocks;
 import com.ab.tradingapp.models.User;
+import com.ab.tradingapp.models.Wallet;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -16,6 +18,7 @@ import com.ab.tradingapp.services.ExchangeService;
 import com.ab.tradingapp.services.OrderService;
 import com.ab.tradingapp.services.StockService;
 import com.ab.tradingapp.services.UserService;
+import com.ab.tradingapp.services.WalletService;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
@@ -39,6 +42,9 @@ public class UserController {
 
     @Autowired
     private OrderService orderservice;
+    
+    @Autowired
+    private WalletService walletservice;
     // VIEW HANDLER METHODS
     
     private int currentStockId;
@@ -118,7 +124,7 @@ public class UserController {
     	
 		 List<Exchange> exchangeList = exchangeservice.listAll();
          
-    	 reqOrder.setUser_id(1);
+    	 reqOrder.setUser_id(detailservice.returnUserID());
     	 reqOrder.setStock_id(currentStockId);
     	 reqOrder.setExchange_code(exchange_code);
     	 
@@ -155,13 +161,41 @@ public class UserController {
     @PostMapping(value="/purchaseCart")
     public ModelAndView purchaseCart() {
 		
-    	System.out.println("It was CALLED!");
     	orderservice.purchaseCart();
+    	addToWallet(orderservice.getCart());
+    	orderservice.clearCart();
+    	
+    	
     	
     	ModelAndView mav = new ModelAndView (); 
-	   	mav.setViewName("/wallet");
+	   	mav.setViewName("/cart");
 	   	
 	   	return mav;
+    }
+    
+    private void addToWallet(List<Order> cart) {
+		
+		for(Order o : cart) {
+			Wallet w = new Wallet();
+			w.setUserId(detailservice.returnUserID());
+			w.setStockId(o.getStock_id());
+			w.setStockAmount(o.getTransaction_amount());
+			
+			walletservice.save(w);
+		}
+	}
+
+	@GetMapping(value="/wallet")
+    public ModelAndView getWallet() {
+		
+    	List<Wallet> wallet = walletservice.listAll();
+    	
+    	ModelAndView mav = new ModelAndView (); 
+	   	mav.addObject("listWallet", wallet);
+	   	mav.setViewName("/wallet");
+		
+    	return null;
+    	
     }
     
     @RequestMapping(value="/viewStockOptions", method = RequestMethod.GET)

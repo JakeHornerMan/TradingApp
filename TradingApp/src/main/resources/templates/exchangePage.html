@@ -42,8 +42,14 @@
 		            <div class="form-group row">
 		                <label class="form_label">Exchange Broker: </label>
 		                <div class="col-8">
-		                	<select th:field="*{exchange_code}" th:object="${exchangeObj}">
-							  <option  th:each="exchange: ${listExchanges}" th:value="${exchange_code}" th:text="${exchange.exchange_code}"/>exchange_code</option>
+
+		                	<select th:field="*{exchange_code}">
+							 <!--   <option  th:each="exchange: ${listExchanges}" value="${exchange.exchange_code}" th:text="${exchange.exchange_code}"/>exchange_code</option> -->
+							<option th:each="exchange: ${listExchanges}" th:value="${exchange.exchange_code}" th:text="${exchange.exchange_code}"></option>
+
+		                	<!--   <select th:field="*{exchange_code}" th:object="${exchangeObj}">
+							  <option  th:each="exchange: ${listExchanges}" th:value="${exchange_code}" th:text="${exchange.exchange_code}"/>exchange_code</option> -->
+
 							</select>
 		                </div>
 		            </div>
