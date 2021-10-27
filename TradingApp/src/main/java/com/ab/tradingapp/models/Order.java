@@ -2,6 +2,7 @@ package com.ab.tradingapp.models;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -20,6 +21,7 @@ public class Order {
 	private String type;
 	private double transaction_amount;
 	private double transaction_cost;
+	@Column(name="order_date")
 	private LocalDateTime dateTime;
 	
 	public Order(int order_id, int user_id, int stock_id, String exchange_code, String type, double transaction_amount,

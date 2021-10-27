@@ -4,6 +4,7 @@ package com.ab.tradingapp.repos;
 
 import java.sql.Date;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -26,8 +27,10 @@ public interface OrderRepo extends JpaRepository<Order,Integer> {
 			@Param("type") String type, @Param("transaction_amount") double transaction_amount, @Param("transaction_cost") double transaction_cost, 
 			@Param("order_date") LocalDateTime order_date);
 	
-	
 
+
+	@Query(value="SELECT * from Orders o where o.user_id = :user_id",nativeQuery=true)
+	List<Order> findByuser_id(@Param("user_id") int user_id);
 
 	
 }

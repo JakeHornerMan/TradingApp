@@ -1,5 +1,6 @@
 package com.ab.tradingapp.controllers;
 
+import com.ab.tradingapp.models.CustomUserDetails;
 import com.ab.tradingapp.models.Exchange;
 import com.ab.tradingapp.models.Order;
 import com.ab.tradingapp.models.Stocks;
@@ -7,6 +8,7 @@ import com.ab.tradingapp.models.User;
 import com.ab.tradingapp.models.Wallet;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
+@SessionAttributes("logged_in_user")
 public class UserController {
 
 	@Autowired
@@ -60,7 +63,7 @@ public class UserController {
     	
     	ModelAndView v = new ModelAndView();
     	List<Stocks> s = stockservice.listAll();
-
+    	
     	v.addObject("listStocks", s);
     	v.setViewName("/dashboard");
 
@@ -78,7 +81,7 @@ public class UserController {
     public ModelAndView showLogin() {
         return new ModelAndView("index");
     }
-
+    
     @RequestMapping("/logout")
     public ModelAndView viewLogout() {
         return new ModelAndView("index");
@@ -91,12 +94,10 @@ public class UserController {
         return new ModelAndView("cart");
     }
     
-
-//    @RequestMapping("/wallet")
-//    public ModelAndView viewWallet() {
-//        return new ModelAndView("wallet");
-//    }
-
+    @RequestMapping("/wallet")
+    public ModelAndView viewWallet() {
+        return new ModelAndView("wallet");
+    }
     
     @RequestMapping(value="/exchangePage")
 	public ModelAndView getExchagesByStockId(@RequestParam("stock_id") int stock_id, Model model) {
@@ -119,7 +120,27 @@ public class UserController {
 		return mv;
 	}
     
-    @PostMapping(value="/create_purchase")
+    
+    @RequestMapping(method=RequestMethod.GET, value ="/order_history")
+    public ModelAndView OrderHistory (Principal principal) {
+    	
+    	// String userEmail = principal.getName();
+    	
+    	// User user = service.getUserId(userEmail);
+    	
+    	ModelAndView v = new ModelAndView(); 
+    	List<Order> s = orderservice.viewOrderHistory(detailservice.returnUserID());
+    	System.out.print(s);
+    	v.addObject("listOrders", s);
+    	v.setViewName("/order_history");
+    	
+		return v;
+    	
+    }
+    
+    
+
+	@PostMapping(value="/create_purchase")
     public ModelAndView addAndViewCart(@ModelAttribute("exchange_code") String exchange_code,
     		@ModelAttribute("transaction_amount") double transaction_amount, @ModelAttribute("order") Order reqOrder,
                                        @ModelAttribute("exchangeObj") Exchange exchangeObj) {
@@ -167,6 +188,8 @@ public class UserController {
     	addToWallet(orderservice.getCart());
     	orderservice.clearCart();
     	
+    	
+    	
     	ModelAndView mav = new ModelAndView (); 
 	   	mav.setViewName("/cart");
 	   	
@@ -188,20 +211,13 @@ public class UserController {
 	@GetMapping(value="/wallet")
     public ModelAndView getWallet() {
 		
-    	List<Wallet> w1 = walletservice.listAll();
-    	List<Wallet> wallet = new ArrayList<>();
-    	
-    	for(Wallet w : w1) {
-    		if(w.getUser_Id() == detailservice.returnUserID()) {
-    			wallet.add(w);
-    		}
-    	}
+    	List<Wallet> wallet = walletservice.listAll();
     	
     	ModelAndView mav = new ModelAndView (); 
 	   	mav.addObject("listWallet", wallet);
 	   	mav.setViewName("/wallet");
 		
-    	return mav;
+    	return null;
     	
     }
     

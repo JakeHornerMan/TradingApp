@@ -60,4 +60,8 @@ public class OrderService {
 		return repo.insertItemsIntoOrders(user_id, stock_id, exchange_code,  type, transaction_amount, transaction_cost, date);
 	}*/
 	
+	public List<Order> viewOrderHistory (int user_id) {
+		return repo.findByuser_id(user_id);
+}
+	
 }

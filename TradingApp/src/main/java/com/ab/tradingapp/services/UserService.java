@@ -31,5 +31,11 @@ public class UserService {
     public void delete(int userID) {
         repo.deleteById(userID);
     }
+    
+//    public User getUserId(String email) {
+//    	
+//    	return repo.findByEmail(email);
+//    }
+    
 }
 
