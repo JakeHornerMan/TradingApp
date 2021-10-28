@@ -43,8 +43,10 @@ public class OrderService {
 		
 		for(Order o : cart) {
 			o.setDateTime(now);
+			o.setOrder_id(0);
 			//save(o);
 			saveMan(o);
+			
 		}
 	}
 	

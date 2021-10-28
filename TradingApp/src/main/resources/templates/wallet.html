@@ -28,6 +28,7 @@
                 <th scope="col">Stock ID</th>
                 <th scope="col">Stock Name</th>
                 <th scope="col">Stock Amount</th>
+                <th scope="col">Sell</th>
             </tr>
             </thead>
             <tbody>
@@ -35,6 +36,10 @@
                 <td th:text="${wallet.stock_Id}">Stock ID</td>
                 <td th:text="${wallet.stock_name}">Stock Name</td>
                 <td th:text="${wallet.stock_Amount}">Stock Amount</td>
+                <form action="/sellPage" method="post">
+                	<td><a th:href="@{/sellPage(wallet_id=${wallet.wallet_id})}" th:text="Sell"
+                       class="button"></a></td>
+            	</form>
             </tr>
             </tbody>
         </table>

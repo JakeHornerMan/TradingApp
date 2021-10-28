@@ -1,0 +1,6 @@
+ALTER TABLE Stocks ADD market_price FLOAT NOT NULL;
+UPDATE Stocks SET market_price = 500 WHERE stock_id = 1;
+UPDATE Stocks SET market_price = 107.5 WHERE stock_id = 2;
+UPDATE Stocks SET market_price = 111.2 WHERE stock_id = 3;
+UPDATE Stocks SET market_price = 32.5 WHERE stock_id = 4;
+UPDATE Stocks SET market_price = 10.2 WHERE stock_id = 5;

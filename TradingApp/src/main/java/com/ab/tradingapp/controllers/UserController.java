@@ -24,6 +24,7 @@ import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class UserController {
@@ -127,6 +128,24 @@ public class UserController {
 		return mv;
 	}
     
+    @RequestMapping(value = "/sellPage")
+    public ModelAndView sellStock
+		(@RequestParam("wallet_id") int wallet_id) {
+    	
+    	Wallet w1 = new Wallet();
+    	
+    	for (Wallet w : walletservice.listAll()) {
+    		if (w.getWallet_id() == wallet_id) {
+    			w1 =w;
+    		}
+    	}
+    	
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("sellObject",w1);
+		mv.setViewName("sellPage");
+		return mv;
+    }
+    
     
     
     @RequestMapping(method=RequestMethod.GET, value ="/order_history")
@@ -153,6 +172,7 @@ public class UserController {
     	
 		 List<Exchange> exchangeList = exchangeservice.listAll();
          
+		 reqOrder.setOrder_id(orderservice.getCart().size());
     	 reqOrder.setUser_id(detailservice.returnUserID());
     	 reqOrder.setStock_id(currentStockId);
     	 reqOrder.setExchange_code(exchange_code);
