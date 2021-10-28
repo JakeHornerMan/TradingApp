@@ -23,9 +23,10 @@ public class Order {
 	private double transaction_cost;
 	@Column(name="order_date")
 	private LocalDateTime dateTime;
+	private String stock_name;
 	
 	public Order(int order_id, int user_id, int stock_id, String exchange_code, String type, double transaction_amount,
-			double transaction_cost, LocalDateTime dateTime) {
+			double transaction_cost, LocalDateTime dateTime, String stock_name) {
 		super();
 		this.order_id = order_id;
 		this.user_id = user_id;
@@ -35,6 +36,7 @@ public class Order {
 		this.transaction_amount = transaction_amount;
 		this.transaction_cost = transaction_cost;
 		this.dateTime = dateTime;
+		this.stock_name=stock_name;
 	}
 
 	public int getOrder_id() {
@@ -99,6 +101,14 @@ public class Order {
 
 	public void setDateTime(LocalDateTime dateTime) {
 		this.dateTime = dateTime;
+	}
+
+	public String getStock_name() {
+		return stock_name;
+	}
+
+	public void setStock_name(String stock_name) {
+		this.stock_name = stock_name;
 	}
 
 	@Override

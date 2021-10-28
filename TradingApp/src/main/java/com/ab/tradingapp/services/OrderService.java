@@ -53,7 +53,7 @@ public class OrderService {
 	}
 	
 	public void saveMan(Order o) {
-		repo.insertItemsIntoOrders(o.getUser_id(), o.getStock_id(), o.getExchange_code(), o.getType(), o.getTransaction_amount(), o.getTransaction_cost(),o.getDateTime());
+		repo.insertItemsIntoOrders(o.getUser_id(), o.getStock_id(), o.getExchange_code(), o.getType(), o.getTransaction_amount(), o.getTransaction_cost(),o.getDateTime(),o.getStock_name());
 	}
 
 	public void clearCart() {

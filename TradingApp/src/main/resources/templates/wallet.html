@@ -26,12 +26,14 @@
             <thead>
             <tr>
                 <th scope="col">Stock ID</th>
+                <th scope="col">Stock Name</th>
                 <th scope="col">Stock Amount</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="wallet: ${listWallet}" scope="row">
                 <td th:text="${wallet.stock_Id}">Stock ID</td>
+                <td th:text="${wallet.stock_name}">Stock Name</td>
                 <td th:text="${wallet.stock_Amount}">Stock Amount</td>
             </tr>
             </tbody>

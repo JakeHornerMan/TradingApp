@@ -160,6 +160,7 @@ public class UserController {
     	 System.out.print(reqOrder.getExchange_code());
     	 reqOrder.setType("BUY");
     	 reqOrder.setTransaction_amount(transaction_amount);
+    	 reqOrder.setStock_name(stockservice.returnStockById(currentStockId).getStock_name());
     	 
     	  
     	 double cost = (exchangeList.get(0).getStock_value()*transaction_amount)+exchangeList.get(0).getStock_fee();
@@ -207,6 +208,7 @@ public class UserController {
 			w.setUser_Id(detailservice.returnUserID());
 			w.setStock_Id(o.getStock_id());
 			w.setStock_Amount(o.getTransaction_amount());
+			w.setStock_name(o.getStock_name());
 			
 			walletservice.save(w);
 		}

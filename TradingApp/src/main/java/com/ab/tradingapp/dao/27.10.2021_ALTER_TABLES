@@ -2,3 +2,8 @@ ALTER TABLE Wallet ADD wallet_id INT;
 ALTER TABLE Wallet ADD PRIMARY KEY (wallet_id); 
 
 // please set the wallet_id to auto increment
+
+
+//PART2
+ALTER TABLE Orders ADD stock_name VARCHAR(50);
+ALTER TABLE Wallet ADD stock_name VARCHAR(50);

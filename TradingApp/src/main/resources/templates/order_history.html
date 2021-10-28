@@ -30,7 +30,6 @@
     <table class="table table-dark">
         <thead class=>
         <tr>
-            <th scope="col">User ID</th>
             <th scope="col">Stock ID</th>
             <th scope="col">Exchange Code</th>
             <th scope="col">Type</th>
@@ -41,7 +40,6 @@
         </thead>
         <tbody>
         <tr th:each="Order: ${listOrders}" scope="row">
-            <td th:text="${Order.user_id}">User ID</td>
             <td th:text="${Order.stock_id}">Stock ID</td>
             <td th:text="${Order.exchange_code}">Exchange Code</td>
             <td th:text="${Order.type}">Type</td>

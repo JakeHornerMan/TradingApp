@@ -23,4 +23,8 @@ public class StockService {
 	public List<Stocks> listAll() {
         return stockrespo.findAll();
     }
+
+	public Stocks returnStockById(int id) {
+		return stockrespo.findByID(id);
+	}
 }
