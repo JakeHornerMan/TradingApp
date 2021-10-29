@@ -43,30 +43,15 @@
     <div>
         <form action="#" th:action="@{/create_sell}" th:object="${order}" method="post" style="max-width: 600px; margin: 0 auto;">
 	        <div>
-	            <div style="margin-top:5%">
-	                <label class="form_label">EXCHANGE BROKER: </label>
-	                <div style="margin-bottom:2%">
-
-	                	<select th:field="*{exchange_code}">
-						 <!--   <option  th:each="exchange: ${listExchanges}" value="${exchange.exchange_code}" th:text="${exchange.exchange_code}"/>exchange_code</option> -->
-						<option th:each="exchange: ${listExchanges}" th:value="${exchange.exchange_code}" th:text="${exchange.exchange_code}"></option>
-
-	                	<!--   <select th:field="*{exchange_code}" th:object="${exchangeObj}">
-						  <option  th:each="exchange: ${listExchanges}" th:value="${exchange_code}" th:text="${exchange.exchange_code}"/>exchange_code</option> -->
-
-						</select>
-	                </div>
-	            </div>
-	            <div style="margin-top:3%">
-	                <label class="form_label">AMOUNT TO SELL: </label>
-	                <div>
-	                    <input type="number" th:field="*{transaction_amount}" step="0.01"  />
-	                </div>
-	            </div>
-	            <div>
-	                <button type="submit" id="btn-register" style="margin-top:3%">SELECT</button>
-	            </div>
-	        </div>
+                <label class="form_label">AMOUNT TO SELL: </label>
+                <div>
+                    <input type="number" th:field="*{transaction_amount}" step="0.01"  />
+                </div>
+            </div>
+            <div>
+                <button type="submit" id="btn-register" style="margin-top:3%">SELECT</button>
+            </div>
+        </div>
 	    </form>
     </div>
     

@@ -165,6 +165,15 @@ public class UserController {
     	
     }
     
+    @PostMapping(value="/create_sell")
+    public ModelAndView sellAndViewCart(@ModelAttribute("transaction_amount") double transaction_amount) {
+		
+    	
+    	
+    	return null;
+    	
+    }
+    
     @PostMapping(value="/create_purchase")
     public ModelAndView addAndViewCart(@ModelAttribute("exchange_code") String exchange_code,
     		@ModelAttribute("transaction_amount") double transaction_amount, @ModelAttribute("order") Order reqOrder,
@@ -253,6 +262,8 @@ public class UserController {
     	return mav;
     	
     }
+	
+	
     
     @RequestMapping(value="/viewStockOptions", method = RequestMethod.GET)
     public ModelAndView viewStockOptions(@ModelAttribute Exchange exchange) {
