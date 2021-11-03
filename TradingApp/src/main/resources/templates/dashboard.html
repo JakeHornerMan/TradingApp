@@ -48,11 +48,11 @@
             <td th:text="${stocks.stock_id}">Stock ID</td>
             <td th:text="${stocks.stock_name}">Stock Name</td>
             <!-- <td th:text="${stocks.stock_bse}">Stock BSE</td> -->
-            <td th:text="${stocks.stock_bse} ? 'AVALIABLE' : 'NOT AVALIABLE'"/>
+            <td th:text="${stocks.stock_bse} ? 'AVAILABLE' : 'NOT AVAILABLE'"/>
             <!-- <td th:text="${stocks.stock_nse}">Stock NSE</td> -->
-            <td th:text="${stocks.stock_nse} ? 'AVALIABLE' : 'NOT AVALIABLE'"/>
+            <td th:text="${stocks.stock_nse} ? 'AVAILABLE' : 'NOT AVAILABLE'"/>
             <!-- <td th:text="${stocks.stock_tyo}">Stock TYO</td> -->
-            <td th:text="${stocks.stock_tyo} ? 'AVALIABLE' : 'NOT AVALIABLE'"/>
+            <td th:text="${stocks.stock_tyo} ? 'AVAILABLE' : 'NOT AVAILABLE'"/>
             <form action="/exchangePage" method="post">
                 <td><a th:href="@{/exchangePage(stock_id=${stocks.stock_id})}" th:text="View"
                        class="button"></a></td>

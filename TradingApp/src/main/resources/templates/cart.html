@@ -26,18 +26,32 @@
             <table class="table table-dark">
                 <thead>
                 <tr>
+                	<th scope="col">Order Number</th>
                     <th scope="col">Exchange Code</th>
                     <th scope="col">Type</th>
                     <th scope="col">Amount of Assets</th>
                     <th scope="col">Asset Cost</th>
+                    <th scope="col">Delete Order</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="cart: ${listCart}" scope="row">
+                	<td th:text="${cart.order_id}">Order ID</td>
                     <td th:text="${cart.exchange_code}">Exchange Code</td>
                     <td th:text="${cart.type}">Type</td>
                     <td th:text="${cart.transaction_amount}">Amount of Assets</td>
                     <td th:text="${cart.transaction_cost}">Asset Cost</td>
+                    
+                   <td> <a th:href="@{/deleteOrder/{orderId}(orderId=${cart.order_id})}" class="btn btn-danger">Delete</a> </td>
+				   
+											
+				<!--  th:text="${cart.order_id} -->
+					
+              		<!--  <td > <form th:action="@{deleteOrder}" method="post">
+                  		 <input type="hidden" name="orderId" th:value="${cart.order_id}" />
+                  		 <input type="submit" value="Delete" class="btn btn-danger" /> 
+              			 </form> </td> -->
+           			
                 </tr>
                 </tbody>
             </table>

@@ -1,18 +1,16 @@
 package com.ab.tradingapp.services;
 
-import java.sql.Date;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import com.ab.tradingapp.models.Order;
-import com.ab.tradingapp.models.Wallet;
 import com.ab.tradingapp.repos.OrderRepo;
 
 @Service
@@ -32,9 +30,33 @@ public class OrderService {
 		return cart;
 	}
 	
-	public void deleteCartItem(Order o) {
-		cart.remove(o);
+	public void deleteCartItem(int orderId) {
+		
+		Iterator<Order> ordersIt = cart.iterator();
+		
+		while(ordersIt.hasNext()) {
+			
+			Order o = ordersIt.next();
+			
+			if(orderId == (o.getOrder_id())) {
+				ordersIt.remove();
+			}
+		}
+		
 	}
+	
+	public void replaceOrder (int orderId) {
+		Iterator<Order> orders = cart.iterator();
+		
+		while(orders.hasNext()) {
+			Order o = orders.next();
+			
+			if(orderId == (o.getOrder_id())) {
+				cart.set(o.getOrder_id()-1, o); 
+			}
+		}
+	}
+	
 	
 	public void purchaseCart() {
 		

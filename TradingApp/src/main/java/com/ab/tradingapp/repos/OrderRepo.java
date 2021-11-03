@@ -30,8 +30,6 @@ public interface OrderRepo extends JpaRepository<Order,Integer> {
 
 
 	@Query(value="SELECT * from Orders o where o.user_id = :user_id",nativeQuery=true)
-	List<Order> findByuser_id(@Param("user_id") int user_id);
-
-	
+	List<Order> findByuser_id(@Param("user_id") int user_id);	
 }
  

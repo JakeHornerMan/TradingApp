@@ -5,6 +5,7 @@ import com.ab.tradingapp.models.Order;
 import com.ab.tradingapp.models.Stocks;
 import com.ab.tradingapp.models.User;
 import com.ab.tradingapp.models.Wallet;
+import com.ab.tradingapp.repos.OrderRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -46,6 +47,7 @@ public class UserController {
     
     @Autowired
     private WalletService walletservice;
+    
     // VIEW HANDLER METHODS
     
     private int currentStockId;
@@ -67,7 +69,7 @@ public class UserController {
 
         return v;
     }
-
+    
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String showRegistrationForm(Model model) {
         User user = new User();
@@ -165,7 +167,22 @@ public class UserController {
     	
     }
     
-    @PostMapping(value="/create_sell")
+    @RequestMapping(value = "/deleteOrder/{orderId}", method = RequestMethod.GET)
+    public String DeleteOrder(@PathVariable(name="orderId")int orderId) {
+    	System.out.print("order Deleted " + orderId); 
+    	orderservice.deleteCartItem(orderId);
+        return "redirect:/cart";
+    }
+    
+    @RequestMapping(value = "/replaceOrder/{orderId}", method = RequestMethod.GET)
+    public String Replaceorder (@PathVariable(name="orderId") int orderId) {
+    	orderservice.replaceOrder(orderId);
+    	return "redirect:/cart"; 
+    }
+    
+    
+    
+    @PostMapping(value ="/create_sell")
     public ModelAndView sellAndViewCart(@ModelAttribute("transaction_amount") double transaction_amount) {
 		
     	
